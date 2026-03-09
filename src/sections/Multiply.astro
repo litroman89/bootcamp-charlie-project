@@ -1,0 +1,22 @@
+---
+import Form from '@/components/form.astro';
+import { actions } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.sendContactForm);
+
+if (result && !result.error) {
+    // Перенаправляем пользователя на эту же страницу, добавив параметр
+    return Astro.redirect('/?success=true');
+}
+if (result && result.error) {
+    console.log(result.error);
+}
+// Проверяем, есть ли в URL параметр успеха
+const isSuccess = Astro.url.searchParams.has('success');
+---
+
+<div style='padding: 2rem;'>
+    <h2>Contact Form (Astro Actions)</h2>
+    <Form />
+    {isSuccess && <a href='/'>На главную</a>}
+</div>

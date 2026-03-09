@@ -2,42 +2,16 @@
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import { cpaApi } from '../services/api';
-import { actions } from 'astro:actions';
 
 const [benefits, multiply, tasks] = await Promise.all([
 	cpaApi.benefits(),
 	cpaApi.multiply(),
 	cpaApi.tasks(),
 ]);
-
-const result = Astro.getActionResult(actions.sendContactForm);
 ---
 
 <Layout>
 	<Welcome />
-	<pre>{JSON.stringify(benefits, null, 2)}</pre>
 
-	<div style='padding: 2rem;'>
-		<h2>Contact Form (Astro Actions)</h2>
-		<form
-			method='POST'
-			action={actions.sendContactForm}
-			style='display: flex; flex-direction: column; gap: 1rem; max-width: 300px;'
-		>
-			<input type='text' name='name' placeholder='Name' required />
-			<input type='text' name='method' placeholder='Method' required />
-			<input type='text' name='contact' placeholder='Contact' required />
-			<button type='submit'>Submit</button>
-		</form>
-		{
-			result && !result.error && (
-				<p style='color: green;'>Form submitted successfully!</p>
-			)
-		}
-		{
-			result?.error && (
-				<p style='color: red;'>Error: {result.error.message}</p>
-			)
-		}
-	</div>
+	<pre>{JSON.stringify(benefits, null, 2)}</pre>
 </Layout>
