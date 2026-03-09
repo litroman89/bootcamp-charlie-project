@@ -1,3 +1,5 @@
+import { actions } from 'astro:actions';
+
 //1 константы
 const LOCALES = {
     EN: 'en',
@@ -13,13 +15,12 @@ const PAGES = {
     TASKS: 'tasks',
 } as const;
 
-const API_HEADERS = {
-    // 'x-api-key': import.meta.env.API_KEY,
-    'x-api-key': 'prodcpakey333'
+export const API_HEADERS = {
+    'x-api-key': import.meta.env.API_KEY,
 };
 
-const BASE_URL = 'https://cpa-server-vtel.onrender.com';
-const FORM_URL = `${BASE_URL}/form`;
+export const BASE_URL = 'https://cpa-server-vtel.onrender.com';
+export const FORM_URL = `${BASE_URL}/form`;
 
 //2 типы
 type Locale = (typeof LOCALES)[keyof typeof LOCALES];
@@ -27,7 +28,7 @@ type Locale = (typeof LOCALES)[keyof typeof LOCALES];
 type Page = (typeof PAGES)[keyof typeof PAGES];
 // = 'benefits' | 'multiply' | 'tasks'
 
-type ContactFormData = {
+export type ContactFormData = {
     name: string;
     method: 'telegram' | 'whatsapp' | 'email';
     contact: string;
@@ -55,14 +56,10 @@ const fetchPageContent = async (
 };
 
 const postData = async (data: ContactFormData) => {
-    const response = await fetch(FORM_URL, {
-        method: 'POST',
-        headers: { ...API_HEADERS, 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-    });
+    const { error } = await actions.sendContactForm(data);
 
-    if (!response.ok) {
-        throw new Error(`Ошибка при отправке данных: ${response.status}`);
+    if (error) {
+        throw new Error(`Ошибка при отправке данных: ${error.message}`);
     }
 };
 
