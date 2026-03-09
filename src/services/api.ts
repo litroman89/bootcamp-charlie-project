@@ -14,7 +14,8 @@ const PAGES = {
 } as const;
 
 const API_HEADERS = {
-    'x-api-key': import.meta.env.API_KEY,
+    // 'x-api-key': import.meta.env.API_KEY,
+    'x-api-key': 'prodcpakey333'
 };
 
 const BASE_URL = 'https://cpa-server-vtel.onrender.com';
@@ -28,7 +29,7 @@ type Page = (typeof PAGES)[keyof typeof PAGES];
 
 type ContactFormData = {
     name: string;
-    method: string;
+    method: 'telegram' | 'whatsapp' | 'email';
     contact: string;
 };
 
