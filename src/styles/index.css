@@ -2,5 +2,6 @@
 @import './global.css' layer(global);
 @import './reset.css' layer(reset);
 @import './variables.css' layer(variables);
+@import './fonts.css' layer(fonts);
 @import './base.css' layer(base);
 @import './utilities.css' layer(utilities);
