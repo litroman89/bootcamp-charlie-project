@@ -1,5 +1,4 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import { cpaApi } from '../services/api';
 
@@ -11,7 +10,5 @@ const [benefits, multiply, tasks] = await Promise.all([
 ---
 
 <Layout>
-	<Welcome />
-
 	<pre>{JSON.stringify(benefits, null, 2)}</pre>
 </Layout>
