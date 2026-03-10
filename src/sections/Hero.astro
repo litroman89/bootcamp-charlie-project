@@ -1,0 +1,142 @@
+---
+import { Picture } from 'astro:assets';
+import Container from '@/components/Container.astro';
+import snakeImage from '@/assets/img/img-hero.png';
+import Header from '@/components/Header.astro';
+import MainButton from '@/components/MainButton.astro';
+import InstaIcon from '@/assets/icons/insta.svg';
+import TelegramIcon from '@/assets/icons/telegram.svg';
+import LinkedInIcon from '@/assets/icons/linkedIn.svg';
+---
+
+<section class='hero'>
+    <Container>
+        <Header />
+        <h1 class='hero__title'>
+            PRACTICE <br />
+            MAKES <span class='hero__title-animated'>PROFIT</span>
+        </h1>
+        <p class='hero__description'>
+            We provide effective solutions, tested and refined on our own
+            products and ad budgets
+        </p>
+        <div class='hero__button-container'>
+            <MainButton />
+        </div>
+
+        <div class='social-links'>
+            <a href='#' class='social-link'>
+                <InstaIcon name='facebook' width={30} height={30} />
+            </a>
+            <a href='#' class='social-link'>
+                <TelegramIcon name='twitter' width={30} height={30} />
+            </a>
+            <a href='#' class='social-link'>
+                <LinkedInIcon name='linkedin' width={30} height={30} />
+            </a>
+        </div>
+    </Container>
+
+    <Picture
+        src={snakeImage}
+        alt='snake image'
+        formats={['avif', 'webp']}
+        widths={[320, 768, 1200, snakeImage.width]}
+        sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
+        class='hero__image'
+    />
+
+    <div class='radial-gradient-bottom'></div>
+    <div class='radial-gradient-top'></div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        background-image: var(--gradient-primary);
+        height: 100dvh;
+        padding-top: 30px;
+        padding-bottom: 50px;
+        overflow: hidden;
+    }
+
+    .hero__title {
+        margin-top: 148px;
+        font-family: var(--font-heading);
+        color: var(--color-text-primary);
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 90%; /* 72px */
+        letter-spacing: -1.742px;
+        text-transform: uppercase;
+    }
+
+    .hero__title-animated {
+        color: var(--color-brand-primary);
+    }
+
+    .hero__description {
+        margin-top: 12px;
+        max-width: 536px;
+        font-family: var(--font-body);
+        color: var(--color-text-primary);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 120%;
+    }
+
+    .hero__button-container {
+        margin-top: 30px;
+    }
+
+    .social-links {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        gap: 30px;
+    }
+
+    .social-link {
+        padding: 5px;
+
+        path {
+            transition: all 0.3s ease;
+        }
+    }
+
+    .social-link:hover {
+        path {
+            fill: var(--color-brand-primary);
+        }
+    }
+
+    .hero__image {
+        position: absolute;
+        max-width: 949px;
+        height: auto;
+        bottom: 0;
+        right: 0px;
+    }
+
+    .radial-gradient-bottom,
+    .radial-gradient-top {
+        position: absolute;
+        bottom: -401px;
+        left: -512px;
+        width: 1187px;
+        height: 1186px;
+        border-radius: 100%;
+        background: radial-gradient(
+            50% 50% at 50% 50%,
+            rgba(20, 9, 26, 0.2) 0%,
+            rgba(20, 9, 26, 0) 100%
+        );
+        pointer-events: none;
+    }
+
+    .radial-gradient-top {
+        top: -401px;
+        right: -234px;
+    }
+</style>
