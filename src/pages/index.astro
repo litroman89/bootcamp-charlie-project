@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { cpaApi } from '@/services/api';
 import Hero from '@/sections/Hero.astro';
+import { cpaApi } from '@/services/api';
 
 const [benefits, multiply, tasks] = await Promise.all([
 	cpaApi.benefits(),

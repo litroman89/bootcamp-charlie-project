@@ -1,12 +1,13 @@
 ---
 import { Picture } from 'astro:assets';
-import Container from '@/components/Container.astro';
+
+import InstaIcon from '@/assets/icons/insta.svg';
+import LinkedInIcon from '@/assets/icons/linkedIn.svg';
+import TelegramIcon from '@/assets/icons/telegram.svg';
 import snakeImage from '@/assets/img/img-hero.png';
+import Container from '@/components/Container.astro';
 import Header from '@/components/Header.astro';
 import MainButton from '@/components/MainButton.astro';
-import InstaIcon from '@/assets/icons/insta.svg';
-import TelegramIcon from '@/assets/icons/telegram.svg';
-import LinkedInIcon from '@/assets/icons/linkedIn.svg';
 ---
 
 <section class='hero'>
@@ -58,6 +59,11 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
         padding-top: 30px;
         padding-bottom: 50px;
         overflow: hidden;
+    }
+
+    .hero :global(.container) {
+        position: relative;
+        height: 100%;
     }
 
     .hero__title {

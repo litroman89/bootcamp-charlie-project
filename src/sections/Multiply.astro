@@ -1,12 +1,13 @@
 ---
-import Form from '@/components/Form.astro';
 import { actions } from 'astro:actions';
+
+import Form from '@/components/Form.astro';
 
 const result = Astro.getActionResult(actions.sendContactForm);
 
 if (result && !result.error) {
     // Перенаправляем пользователя на эту же страницу, добавив параметр
-    return Astro.redirect('/?success=true');
+    Astro.redirect('/?success=true');
 }
 if (result && result.error) {
     console.log(result.error);
