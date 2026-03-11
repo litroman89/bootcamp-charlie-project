@@ -8,11 +8,15 @@ import snakeImage from '@/assets/img/img-hero.png';
 import Container from '@/components/Container.astro';
 import Header from '@/components/Header.astro';
 import MainButton from '@/components/MainButton.astro';
+import type { SupportedLang } from '@/i18n/nav';
+
+//props
+const { lang = 'en' as SupportedLang } = Astro.props;
 ---
 
-<section class='hero'>
+<section class='hero gradient-primary'>
     <Container>
-        <Header />
+        <Header lang={lang} />
         <h1 class='hero__title'>
             PRACTICE <br />
             MAKES <span class='hero__title-animated'>PROFIT</span>
@@ -46,15 +50,11 @@ import MainButton from '@/components/MainButton.astro';
         sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
         class='hero__image'
     />
-
-    <div class='radial-gradient-bottom'></div>
-    <div class='radial-gradient-top'></div>
 </section>
 
 <style>
     .hero {
         position: relative;
-        background-image: var(--gradient-primary);
         height: 100dvh;
         padding-top: 30px;
         padding-bottom: 50px;
@@ -123,6 +123,7 @@ import MainButton from '@/components/MainButton.astro';
         height: auto;
         bottom: 0;
         right: 0px;
+        pointer-events: none;
     }
 
     .radial-gradient-bottom,
@@ -142,7 +143,9 @@ import MainButton from '@/components/MainButton.astro';
     }
 
     .radial-gradient-top {
-        top: -401px;
+        left: auto;
         right: -234px;
+        bottom: auto;
+        top: -401px;
     }
 </style>

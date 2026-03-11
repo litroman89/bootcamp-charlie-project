@@ -1,6 +1,11 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import Logo from '@/assets/icons/snake-icon-white.svg';
+import { mainNav } from '@/config/navigation';
+import { tNav } from '@/i18n/nav';
+
+//props
+const { lang = 'en' } = Astro.props;
 ---
 
 <header class='header'>
@@ -10,15 +15,15 @@ import Logo from '@/assets/icons/snake-icon-white.svg';
 
     <nav class='header__nav'>
         <ul class='header__nav-list'>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Team</a>
-            </li>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Benefits</a>
-            </li>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Join Us</a>
-            </li>
+            {
+                mainNav.map(item => (
+                    <li class='header__nav-item'>
+                        <a href={item.href} class='header__nav-link'>
+                            {tNav(lang, item.i18nKey)}
+                        </a>
+                    </li>
+                ))
+            }
             <li class='header__nav-item'>
                 <LanguageSwitcher />
             </li>
