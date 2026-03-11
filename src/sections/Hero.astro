@@ -1,12 +1,13 @@
 ---
 import { Picture } from 'astro:assets';
-import Container from '@/components/Container.astro';
+
+import InstaIcon from '@/assets/icons/insta.svg';
+import LinkedInIcon from '@/assets/icons/linkedIn.svg';
+import TelegramIcon from '@/assets/icons/telegram.svg';
 import snakeImage from '@/assets/img/img-hero.png';
+import Container from '@/components/Container.astro';
 import Header from '@/components/Header.astro';
 import MainButton from '@/components/MainButton.astro';
-import InstaIcon from '@/assets/icons/insta.svg';
-import TelegramIcon from '@/assets/icons/telegram.svg';
-import LinkedInIcon from '@/assets/icons/linkedIn.svg';
 ---
 
 <section class='hero gradient-bg'>
@@ -60,13 +61,7 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
 
 <style>
     .gradient-bg {
-        background:
-            radial-gradient(
-                ellipse at 35% 50%,
-                rgba(180, 100, 20, 0.6) 0%,
-                transparent 60%
-            ),
-            linear-gradient(135deg, #c47a1a 0%, #6b1a8a 40%, #2d0070 100%);
+        background: var(--gradient-primary);
     }
     .hero {
         min-height: 100vh;
@@ -77,9 +72,9 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
     }
 
     .hero__content {
+        margin-top: 16vh;
         flex: 1;
         display: flex;
-        align-items: center;
     }
 
     .hero__text {
@@ -117,9 +112,6 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
         margin-top: 30px;
     }
 
-    .footer {
-        padding-block: 32px;
-    }
     .hero__image {
         position: absolute;
         max-width: 949px;
@@ -147,6 +139,6 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
     }
 
     .socials__link:hover {
-        color: #fff;
+        color: var(--color-text-primary);
     }
 </style>
