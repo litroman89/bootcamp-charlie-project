@@ -1,0 +1,30 @@
+---
+interface Props {
+    href: string;
+    label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<a href={href} class='nav__link'>
+    {label}
+</a>
+
+<style>
+    .nav__link {
+        font-family: var(--font-heading);
+        color: var(--color-brand-primary);
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration-line: underline;
+        text-underline-position: from-font;
+        text-decoration-style: solid;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+    }
+
+    .nav__link:hover {
+        color: var(--color-text-primary);
+    }
+</style>

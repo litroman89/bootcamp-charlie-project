@@ -1,60 +1,33 @@
 ---
 import Logo from '@/assets/icons/snake-icon-white.svg';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import Nav from './Nav.astro';
+
+import Container from './Container.astro';
+const navLinks = [
+    { href: '#', label: 'Team' },
+    { href: '#', label: 'Benefits' },
+    { href: '#', label: 'Join Us' },
+];
 ---
 
 <header class='header'>
-    <a href='/' class='header__logo'>
-        <Logo width={45} height={41} aria-label='go to home page' />
-    </a>
-
-    <nav class='header__nav'>
-        <ul class='header__nav-list'>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Team</a>
-            </li>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Benefits</a>
-            </li>
-            <li class='header__nav-item'>
-                <a href='#' class='header__nav-link'>Join Us</a>
-            </li>
-            <li class='header__nav-item'>
+    <Container>
+        <div class='header__wrapper'>
+            <a href='/' class='header__logo'>
+                <Logo width={45} height={41} aria-label='go to home page' />
+            </a>
+            <Nav links={navLinks}>
                 <LanguageSwitcher />
-            </li>
-        </ul>
-    </nav>
+            </Nav>
+        </div>
+    </Container>
 </header>
 
 <style>
-    .header {
+    .header__wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .header__nav-list {
-        display: flex;
-        gap: 20px;
-    }
-
-    .header__nav-item {
-        padding: 10px;
-    }
-
-    .header__nav-link {
-        font-family: var(--font-heading);
-        color: var(--color-brand-primary);
-        font-size: 20px;
-        font-weight: 700;
-        text-decoration-line: underline;
-        text-underline-position: from-font;
-        text-decoration-style: solid;
-        text-transform: uppercase;
-        transition: color 0.2s ease;
-    }
-
-    .header__nav-link:hover {
-        color: var(--color-text-primary);
     }
 </style>

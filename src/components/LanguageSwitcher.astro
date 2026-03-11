@@ -1,22 +1,16 @@
 ---
-const { pathname } = Astro.url;
 
-// Если путь начинается с /ru/ - меняем на /en/, и наоборот
-const isRussian = pathname.startsWith('/ru');
-const newPath = isRussian
-    ? pathname.replace('/ru', '/en')
-    : pathname.replace('/en', '/ru');
 ---
 
 <div class='lang-switcher' aria-label='change language'>
     <a
-        href={!isRussian ? '/en' + pathname : pathname}
-        class={!isRussian ? 'active' : ''}>ENG</a
+        href='#'
+        class='active'>ENG</a
     >
     <span class='divider'>/</span>
     <a
-        href={isRussian ? '/ru' + pathname : pathname}
-        class={isRussian ? 'active' : ''}>РУС</a
+        href='#'
+        >РУС</a
     >
 </div>
 

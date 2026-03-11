@@ -1,0 +1,40 @@
+---
+import NavLink from './NavLink.astro';
+
+interface Link {
+    href: string;
+    label: string;
+}
+
+interface Props {
+    links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class='nav'>
+    <ul class='nav__list'>
+        {
+            links.map(link => (
+                <li class='nav__item'>
+                    <NavLink href={link.href} label={link.label} />
+                </li>
+            ))
+        }
+        <li class='nav__item'>
+            <slot />
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .nav__list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav__item {
+        padding: 10px;
+    }
+</style>

@@ -9,33 +9,44 @@ import TelegramIcon from '@/assets/icons/telegram.svg';
 import LinkedInIcon from '@/assets/icons/linkedIn.svg';
 ---
 
-<section class='hero'>
-    <Container>
-        <Header />
-        <h1 class='hero__title'>
-            PRACTICE <br />
-            MAKES <span class='hero__title-animated'>PROFIT</span>
-        </h1>
-        <p class='hero__description'>
-            We provide effective solutions, tested and refined on our own
-            products and ad budgets
-        </p>
-        <div class='hero__button-container'>
-            <MainButton />
-        </div>
+<section class='hero gradient-bg'>
+    <Header />
 
-        <div class='social-links'>
-            <a href='#' class='social-link'>
-                <InstaIcon name='facebook' width={30} height={30} />
-            </a>
-            <a href='#' class='social-link'>
-                <TelegramIcon name='twitter' width={30} height={30} />
-            </a>
-            <a href='#' class='social-link'>
-                <LinkedInIcon name='linkedin' width={30} height={30} />
-            </a>
-        </div>
-    </Container>
+    <div class='hero__content'>
+        <Container>
+            <div class='hero__text'>
+                <h1 class='hero__title'>
+                    PRACTICE <br /> MAKES <span class='hero__title-animated'
+                        >PROFIT</span
+                    >
+                </h1>
+                <p class='hero__description'>
+                    A team of passionate creators crafting digital experiences
+                    that push boundaries and leave a lasting impression.
+                </p>
+
+                <div class='hero__button-container'>
+                    <MainButton />
+                </div>
+            </div>
+        </Container>
+    </div>
+
+    <footer class='footer'>
+        <Container>
+            <div class='social-links'>
+                <a href='#' class='social-link'>
+                    <InstaIcon name='facebook' width={30} height={30} />
+                </a>
+                <a href='#' class='social-link'>
+                    <TelegramIcon name='twitter' width={30} height={30} />
+                </a>
+                <a href='#' class='social-link'>
+                    <LinkedInIcon name='linkedin' width={30} height={30} />
+                </a>
+            </div>
+        </Container>
+    </footer>
 
     <Picture
         src={snakeImage}
@@ -45,23 +56,39 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
         sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
         class='hero__image'
     />
-
-    <div class='radial-gradient-bottom'></div>
-    <div class='radial-gradient-top'></div>
 </section>
 
 <style>
+    .gradient-bg {
+        background:
+            radial-gradient(
+                ellipse at 35% 50%,
+                rgba(180, 100, 20, 0.6) 0%,
+                transparent 60%
+            ),
+            linear-gradient(135deg, #c47a1a 0%, #6b1a8a 40%, #2d0070 100%);
+    }
     .hero {
-        position: relative;
-        background-image: var(--gradient-primary);
-        height: 100dvh;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         padding-top: 30px;
         padding-bottom: 50px;
-        overflow: hidden;
+    }
+
+    .hero__content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero__text {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .hero__title {
-        margin-top: 148px;
         font-family: var(--font-heading);
         color: var(--color-text-primary);
         font-size: 80px;
@@ -83,20 +110,28 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
         font-size: 20px;
         font-weight: 400;
         line-height: 120%;
+        margin-bottom: 30px;
     }
 
     .hero__button-container {
         margin-top: 30px;
     }
 
-    .social-links {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        gap: 30px;
+    .footer {
+        padding-block: 32px;
     }
-
+    .hero__image {
+        position: absolute;
+        max-width: 949px;
+        height: auto;
+        bottom: 0;
+        right: 0px;
+    }
+    .social-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
     .social-link {
         padding: 5px;
 
@@ -111,32 +146,7 @@ import LinkedInIcon from '@/assets/icons/linkedIn.svg';
         }
     }
 
-    .hero__image {
-        position: absolute;
-        max-width: 949px;
-        height: auto;
-        bottom: 0;
-        right: 0px;
-    }
-
-    .radial-gradient-bottom,
-    .radial-gradient-top {
-        position: absolute;
-        bottom: -401px;
-        left: -512px;
-        width: 1187px;
-        height: 1186px;
-        border-radius: 100%;
-        background: radial-gradient(
-            50% 50% at 50% 50%,
-            rgba(20, 9, 26, 0.2) 0%,
-            rgba(20, 9, 26, 0) 100%
-        );
-        pointer-events: none;
-    }
-
-    .radial-gradient-top {
-        top: -401px;
-        right: -234px;
+    .socials__link:hover {
+        color: #fff;
     }
 </style>
