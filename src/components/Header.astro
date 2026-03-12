@@ -1,0 +1,32 @@
+---
+import Container from './Container.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import Nav from './Nav.astro';
+import Logo from '@/assets/icons/snake-icon-white.svg';
+const navLinks = [
+    { href: '#', label: 'Team' },
+    { href: '#', label: 'Benefits' },
+    { href: '#', label: 'Join Us' },
+];
+---
+
+<header class='header'>
+    <Container>
+        <div class='header__wrapper'>
+            <a href='/' class='header__logo'>
+                <Logo width={45} height={41} aria-label='go to home page' />
+            </a>
+            <Nav links={navLinks}>
+                <LanguageSwitcher />
+            </Nav>
+        </div>
+    </Container>
+</header>
+
+<style>
+    .header__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

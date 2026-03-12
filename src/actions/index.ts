@@ -1,5 +1,6 @@
-import { ActionError, defineAction } from 'astro:actions';
 import { z } from 'astro/zod';
+import { ActionError, defineAction } from 'astro:actions';
+
 import { API_HEADERS, FORM_URL } from '../services/api';
 
 export const server = {

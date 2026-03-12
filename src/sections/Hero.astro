@@ -1,0 +1,144 @@
+---
+import { Picture } from 'astro:assets';
+
+import InstaIcon from '@/assets/icons/insta.svg';
+import LinkedInIcon from '@/assets/icons/linkedIn.svg';
+import TelegramIcon from '@/assets/icons/telegram.svg';
+import snakeImage from '@/assets/img/img-hero.png';
+import Container from '@/components/Container.astro';
+import Header from '@/components/Header.astro';
+import MainButton from '@/components/MainButton.astro';
+---
+
+<section class='hero gradient-bg'>
+    <Header />
+
+    <div class='hero__content'>
+        <Container>
+            <div class='hero__text'>
+                <h1 class='hero__title'>
+                    PRACTICE <br /> MAKES <span class='hero__title-animated'
+                        >PROFIT</span
+                    >
+                </h1>
+                <p class='hero__description'>
+                    A team of passionate creators crafting digital experiences
+                    that push boundaries and leave a lasting impression.
+                </p>
+
+                <div class='hero__button-container'>
+                    <MainButton />
+                </div>
+            </div>
+        </Container>
+    </div>
+
+    <footer class='footer'>
+        <Container>
+            <div class='social-links'>
+                <a href='#' class='social-link'>
+                    <InstaIcon name='facebook' width={30} height={30} />
+                </a>
+                <a href='#' class='social-link'>
+                    <TelegramIcon name='twitter' width={30} height={30} />
+                </a>
+                <a href='#' class='social-link'>
+                    <LinkedInIcon name='linkedin' width={30} height={30} />
+                </a>
+            </div>
+        </Container>
+    </footer>
+
+    <Picture
+        src={snakeImage}
+        alt='snake image'
+        formats={['avif', 'webp']}
+        widths={[320, 768, 1200, snakeImage.width]}
+        sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
+        class='hero__image'
+    />
+</section>
+
+<style>
+    .gradient-bg {
+        background: var(--gradient-primary);
+    }
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .hero__content {
+        margin-top: 16vh;
+        flex: 1;
+        display: flex;
+    }
+
+    .hero__text {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero__title {
+        font-family: var(--font-heading);
+        color: var(--color-text-primary);
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 90%; /* 72px */
+        letter-spacing: -1.742px;
+        text-transform: uppercase;
+    }
+
+    .hero__title-animated {
+        color: var(--color-brand-primary);
+    }
+
+    .hero__description {
+        margin-top: 12px;
+        max-width: 536px;
+        font-family: var(--font-body);
+        color: var(--color-text-primary);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 120%;
+        margin-bottom: 30px;
+    }
+
+    .hero__button-container {
+        margin-top: 30px;
+    }
+
+    .hero__image {
+        position: absolute;
+        max-width: 949px;
+        height: auto;
+        bottom: 0;
+        right: 0px;
+    }
+    .social-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+    .social-link {
+        padding: 5px;
+
+        path {
+            transition: all 0.3s ease;
+        }
+    }
+
+    .social-link:hover {
+        path {
+            fill: var(--color-brand-primary);
+        }
+    }
+
+    .socials__link:hover {
+        color: var(--color-text-primary);
+    }
+</style>

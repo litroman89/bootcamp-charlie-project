@@ -1,0 +1,119 @@
+<button class='main-button'>Get in Touch</button>
+
+<style>
+    .main-button {
+        --border-black: #0c090e;
+        --depth: 12px;
+        --border-width: 4px;
+
+        /* что бы кнопка не вылазила за верхнюю границу */
+        margin-top: var(--depth);
+
+        position: relative;
+        /* Обязательно border-box для точных расчетов */
+        box-sizing: border-box;
+
+        /* padding: 24px 60px; */
+        padding-top: 31px;
+        padding-bottom: 24px;
+        padding-inline: 16px;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 23px;
+        letter-spacing: 4.6px;
+        text-transform: uppercase;
+        text-align: center;
+
+        background-color: var(--color-brand-primary);
+        color: var(--border-black);
+        border: var(--border-width) solid var(--border-black);
+
+        cursor: pointer;
+        outline: none;
+
+        will-change: transform;
+
+        transition:
+            transform 0.1s ease-out,
+            background-color 0.1s,
+            box-shadow 0.1s;
+    }
+
+    /* ВЕРХНЯЯ ГРАНЬ */
+    .main-button::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+
+        /* Идеальная стыковка: ставим ровно поверх верхней внешней рамки */
+        top: calc(-1 * var(--depth) - var(--border-width));
+        left: calc(-1 * var(--border-width));
+        width: calc(100% + var(--border-width) * 2);
+        height: var(--depth);
+
+        background-color: var(--color-brand-primary);
+        border: var(--border-width) solid var(--border-black);
+        /* Убираем нижнюю рамку, чтобы не было наложения (шипа) */
+        border-bottom: none;
+
+        /* Точка трансформации — левый нижний угол! Это фиксирует угол на месте */
+        transform-origin: bottom left;
+        transform: skewX(-45deg);
+        z-index: -2;
+
+        will-change: opacity;
+
+        transition: opacity 0.05s;
+    }
+
+    /* ПРАВАЯ ГРАНЬ */
+    .main-button::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+
+        /* Идеальная стыковка: ставим ровно к правой внешней рамке */
+        top: calc(-1 * var(--border-width));
+        right: calc(-1 * var(--depth) - var(--border-width));
+        width: var(--depth);
+        height: calc(100% + var(--border-width) * 2);
+
+        background-color: var(--color-brand-primary);
+        border: var(--border-width) solid var(--border-black);
+        border-left: none;
+        border-top-width: calc(var(--border-width) / 2);
+        /* border-top: none; */
+        /* Убираем левую рамку для гладкого стыка */
+
+        /* Точка трансформации — левый нижний угол! */
+        transform-origin: bottom left;
+        transform: skewY(-45deg);
+        z-index: -1;
+
+        will-change: opacity;
+
+        transition: opacity 0.05s;
+    }
+
+    .main-button:hover {
+        --color-brand-primary: #0c090e;
+        --border-black: #fee97d;
+    }
+
+    /* Анимация физического нажатия (опционально) */
+    .main-button:active {
+        transform: translate(var(--depth), calc(var(--depth) * -1));
+        /* Трюк №1: Внутренняя тень. Создает эффект "ямки" или "паза", в который ушла кнопка */
+        box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 0.15);
+
+        /* Трюк №2: Затемнение цвета. Имитирует, что на вдавленную кнопку падает меньше света */
+        /* background-color: #e6c75c; */
+        /* Чуть более темный и "грязный" желтый */
+    }
+
+    .main-button:active::before,
+    .main-button:active::after {
+        /* Скрываем грани при полном нажатии, имитируя вдавливание */
+        opacity: 0;
+    }
+</style>

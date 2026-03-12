@@ -7,12 +7,21 @@ export default [
   {
     ignores: ['dist/**', 'node_modules/**'],
   },
-  // Парсер и базовая конфигурация для .astro файлов
-  ...eslintPluginAstro.configs['flat/base'],
-  // Парсер TypeScript для .ts файлов
-  {
+  // 1. Конфигурация для TypeScript файлов
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
     files: ['**/*.ts'],
-    ...tseslint.configs.recommended[0],
+  })),
+  // 2. Конфигурация для Astro файлов
+  ...eslintPluginAstro.configs['flat/recommended'],
+  {
+    files: ['**/*.astro'],
+    languageOptions: {
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
+      },
+    },
   },
   // Сортировка импортов: external → internal/relative → стили (CSS внизу)
   {
@@ -32,6 +41,10 @@ export default [
         },
       ],
       'simple-import-sort/exports': 'error',
+      // Отключаем/ослабляем три правила:
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off',
     },
   },
 ];
