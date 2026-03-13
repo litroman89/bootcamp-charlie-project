@@ -22,7 +22,6 @@ const STRINGS_TO_HIGHLIGHT = ['in-house team'];
 
 // Функция, которая заменяет подстроку на обернутый span
 function formatDescription(text: string) {
-    //if any of the strings in STRINGS_TO_HIGHLIGHT is found in the text, replace it with <span>
     STRINGS_TO_HIGHLIGHT.forEach(string => {
         if (text.includes(string)) {
             text = text.replace(string, `<span>${string}</span>`);
