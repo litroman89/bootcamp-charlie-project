@@ -97,6 +97,7 @@ import Container from '@/components/Container.astro';
         font-size: 50px;
         text-transform: none;
         color: var(--color-text-primary);
+        line-height: 1
     }
     .benefits__wrapper {
         padding-top: 20px;
@@ -106,6 +107,7 @@ import Container from '@/components/Container.astro';
     .benefits__text {
         color: var(--color-text-primary);
         flex-basis: 563px;
+        font-size: 20px;
     }
     .benefits__content {
         flex-basis: 563px;
@@ -150,7 +152,8 @@ import Container from '@/components/Container.astro';
         bottom: 48px;
         width: 100%;
         overflow: hidden;
-        border: 2px solid var(--color-brand-primary);
+        border-top: 2px solid var(--color-brand-primary);
+        border-bottom: 2px solid var(--color-brand-primary);
         transform: rotate(1deg);
     }
 
