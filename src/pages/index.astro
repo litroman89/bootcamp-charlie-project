@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/sections/Hero.astro';
+import MultyTasks from '@/sections/MultyTasks.astro';
 import MultiBenefits from '@/sections/MultiBenefits.astro';
 import { cpaApi } from '@/services/api';
 
@@ -12,7 +13,6 @@ const [benefits, multiply, tasks] = await Promise.all([
 ---
 
 <Layout>
-	<!-- <pre>{JSON.stringify(benefits, null, 2)}</pre> -->
+	<!-- <pre>{JSON.stringify(tasks, null, 2)}</pre> -->
 	<Hero />
-	<MultiBenefits/>
 </Layout>

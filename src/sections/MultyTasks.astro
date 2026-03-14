@@ -1,0 +1,181 @@
+---
+import { Picture } from 'astro:assets';
+
+import snakeImage from '@/assets/img/snake-tasks.png';
+import Container from '@/components/Container.astro';
+
+export interface FeatureTile {
+    title: string;
+    text: string;
+}
+
+export interface Props {
+    data: {
+        description: string; // Текст для главной карточки
+        tiles: FeatureTile[]; // Массив ваших объектов
+    };
+}
+
+const { data } = Astro.props;
+
+const STRINGS_TO_HIGHLIGHT = ['in-house team'];
+
+// Функция, которая заменяет подстроку на обернутый span
+function formatDescription(text: string) {
+    STRINGS_TO_HIGHLIGHT.forEach(string => {
+        if (text.includes(string)) {
+            text = text.replace(string, `<span>${string}</span>`);
+        }
+    });
+    return text;
+}
+
+const tiles = data.tiles;
+
+const firstTwoTiles = tiles.slice(0, 2);
+const restTiles = tiles.slice(2);
+---
+
+<section class='multy-tasks'>
+    <Container>
+        <div class='multy-tasks__wrapper'>
+            <header class='multy-tasks__header'>
+                <h2 class='multy-tasks__title'>Multy-tasks</h2>
+            </header>
+
+            <div class='multy-tasks__grid'>
+                <div class='multy-tasks__grid-column'>
+                    <div class='card card-main'>
+                        <div
+                            class='main-text'
+                            set:html={formatDescription(data.description)}
+                        />
+                        <Picture
+                            src={snakeImage}
+                            alt='snake image'
+                            formats={['avif', 'webp']}
+                            widths={[320, 768, 1200, snakeImage.width]}
+                            sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
+                            class='card-main__image'
+                        />
+                    </div>
+                </div>
+                <div class='multy-tasks__grid-column'>
+                    {
+                        firstTwoTiles.map((tile: FeatureTile) => (
+                            <div class='card'>
+                                <h3>{tile.title}</h3>
+                                <p>{tile.text}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div class='multy-tasks__grid-column'>
+                    {
+                        restTiles.map((tile: FeatureTile) => (
+                            <div class='card'>
+                                <h3>{tile.title}</h3>
+                                <p>{tile.text}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<style>
+    .multy-tasks {
+        padding-top: 60px;
+        padding-bottom: 124px;
+        height: 100dvh;
+        background: var(--gradient-secondary);
+
+        .container {
+            height: 100%;
+        }
+    }
+
+    .multy-tasks__wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .multy-tasks__title {
+        color: var(--color-brand-primary);
+        text-align: right;
+        font-size: 40px;
+        line-height: 90%; /* 36px */
+        letter-spacing: -1.742px;
+    }
+
+    .multy-tasks__grid {
+        flex: 1;
+        margin-top: 70px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 24px;
+    }
+
+    .multy-tasks__grid-column {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .card {
+        border-radius: var(--radius-sm);
+        background: var(--color-brand-secondary);
+        height: 100%;
+        padding: 10px;
+
+        h3 {
+            color: var(--color-brand-primary);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        p {
+            margin-top: 10px;
+            color: var(--color-text-primary);
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.2;
+            opacity: 0.7;
+        }
+    }
+
+    .card-main {
+        position: relative;
+        background: linear-gradient(
+            230deg,
+            #9500dc 17.61%,
+            #560080 57.18%,
+            #220032 88.56%
+        );
+        padding: 30px 38px;
+
+        .main-text {
+            color: var(--color-text-primary);
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+
+            span {
+                color: var(--color-brand-primary);
+            }
+        }
+
+        .card-main__image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
+</style>
