@@ -1,0 +1,313 @@
+---
+import arrowBlackRight from '@assets/icons/arrow-black-right.svg';
+import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+
+import arrowBlack from '@/assets/icons/arrow-down-black.svg';
+import arrowYellowRight from '@/assets/icons/arrow-yellow-right.svg';
+import snakeImage from '@/assets/img/snake-with-us.png';
+import Container from '@/components/Container.astro';
+import MainButton from '@/components/MainButton.astro';
+---
+
+<section class='multiply'>
+    <Container>
+        <h2 class='multiply__title'>multiply with us</h2>
+
+        <div class='multiply__wrapper'>
+            <div class='multiply__actions'>
+                <button
+                    class='multiply__btn multiply__btn--active'
+                    data-tab='media-buyers'
+                    type='button'
+                    >For Media Buyers
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='50'
+                        height='23'
+                        viewBox='0 0 52 23'
+                        fill='currentColor'
+                    >
+                        <path
+                            d='M51.0607 12.1066C51.6464 11.5208 51.6464 10.571 51.0607 9.98524L41.5147 0.439297C40.9289 -0.14649 39.9792 -0.14649 39.3934 0.439297C38.8076 1.02508 38.8076 1.97483 39.3934 2.56062L47.8787 11.0459L39.3934 19.5312C38.8076 20.117 38.8076 21.0667 39.3934 21.6525C39.9792 22.2383 40.9289 22.2383 41.5147 21.6525L51.0607 12.1066ZM0 11.0459L0 12.5459L50 12.5459V11.0459V9.5459L0 9.5459L0 11.0459Z'
+                            fill='currentColor'></path>
+                    </svg>
+                </button>
+
+                <button
+                    class='multiply__btn'
+                    data-tab='businesses'
+                    data-icon-active={arrowBlackRight.src}
+                    data-icon-inactive={arrowYellowRight.src}
+                    type='button'
+                    >For Businesses
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='50'
+                        height='23'
+                        viewBox='0 0 52 23'
+                        fill='currentColor'
+                    >
+                        <path
+                            d='M51.0607 12.1066C51.6464 11.5208 51.6464 10.571 51.0607 9.98524L41.5147 0.439297C40.9289 -0.14649 39.9792 -0.14649 39.3934 0.439297C38.8076 1.02508 38.8076 1.97483 39.3934 2.56062L47.8787 11.0459L39.3934 19.5312C38.8076 20.117 38.8076 21.0667 39.3934 21.6525C39.9792 22.2383 40.9289 22.2383 41.5147 21.6525L51.0607 12.1066ZM0 11.0459L0 12.5459L50 12.5459V11.0459V9.5459L0 9.5459L0 11.0459Z'
+                            fill='currentColor'></path>
+                    </svg>
+                </button>
+                <button
+                    class='multiply__btn'
+                    data-tab='partners'
+                    data-icon-active={arrowBlackRight.src}
+                    data-icon-inactive={arrowYellowRight.src}
+                    type='button'
+                    >For Partners
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='50'
+                        height='23'
+                        viewBox='0 0 52 23'
+                        fill='currentColor'
+                    >
+                        <path
+                            d='M51.0607 12.1066C51.6464 11.5208 51.6464 10.571 51.0607 9.98524L41.5147 0.439297C40.9289 -0.14649 39.9792 -0.14649 39.3934 0.439297C38.8076 1.02508 38.8076 1.97483 39.3934 2.56062L47.8787 11.0459L39.3934 19.5312C38.8076 20.117 38.8076 21.0667 39.3934 21.6525C39.9792 22.2383 40.9289 22.2383 41.5147 21.6525L51.0607 12.1066ZM0 11.0459L0 12.5459L50 12.5459V11.0459V9.5459L0 9.5459L0 11.0459Z'
+                            fill='currentColor'></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class='multiply__content'>
+                <div
+                    class='multiply__card multiply__card--active'
+                    data-card='media-buyers'
+                >
+                    <div class='multiply__card-text'>
+                        Got experience with sweepstakes and large ad budgets?
+                        Looking for a team where you can grow and scale without
+                        limits?
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+
+                    <div class='multiply__card-text'>
+                        Multiply your profits with MULTICPA —  we provide the
+                        budget, all the tools and high profit shares
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+                    <MainButton>JOIN THE TEAM</MainButton>
+                </div>
+
+                <div class='multiply__card' data-card='businesses'>
+                    <div class='multiply__card-text'>
+                        Experienced solo buyer or running  a whole team? Need a
+                        reliable partner program with fast onboarding in
+                        sweepstakes  and full support?
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+
+                    <div class='multiply__card-text'>
+                        Work with MULTICPA — you run the traffic, we handle
+                        everything else. From infrastructure and tech support to
+                        funnels, creatives, and expert guidance
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+                    <MainButton>PARTNER UP</MainButton>
+                </div>
+
+                <div class='multiply__card' data-card='partners'>
+                    <div class='multiply__card-text'>
+                        Need real customers — not theories on how to get them?
+                        Have a budget, but no traffic team, creatives, or
+                        strategy?
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+
+                    <div class='multiply__card-text'>
+                        Contact MULTICPA — we’ll build everything from the
+                        ground up, drive traffic, and deliver leads in any niche
+                    </div>
+                    <Image src={arrowBlack} alt='' height={50} />
+                    <MainButton>LAUNCH NOW</MainButton>
+                </div>
+            </div>
+        </div>
+    </Container>
+
+    <Picture
+        src={snakeImage}
+        alt=''
+        formats={['avif', 'webp']}
+        width={631}
+        class='multiply__img'
+        aria-hidden='true'
+    />
+
+    <footer class='multiply__footer'>
+        <Container>
+            <div class='multiply__footer-inner'>
+                <div class='multiply__socials'>
+                    <a href='#' class='multiply__social-link'>INSTAGRAM</a>
+                    <a href='#' class='multiply__social-link'>TELEGRAM</a>
+                    <a href='#' class='multiply__social-link'>LINKEDIN</a>
+                </div>
+                <button class='multiply__scroll-top'
+                    >SCROLL TO TOP <svg
+                        class='multiply__scroll-icon'
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='15'
+                        height='31'
+                        viewBox='0 0 15 31'
+                        fill='currentColor'
+                    >
+                        <path
+                            d='M8.07112 0.292891C7.6806 -0.0976334 7.04743 -0.0976334 6.65691 0.292891L0.292946 6.65685C-0.0975785 7.04738 -0.0975785 7.68054 0.292946 8.07107C0.68347 8.46159 1.31664 8.46159 1.70716 8.07107L7.36401 2.41421L13.0209 8.07107C13.4114 8.46159 14.0446 8.46159 14.4351 8.07107C14.8256 7.68054 14.8256 7.04738 14.4351 6.65685L8.07112 0.292891ZM7.36401 31H8.36401L8.36401 0.999998H7.36401H6.36401L6.36401 31H7.36401Z'
+                            fill=''></path>
+                    </svg></button
+                >
+            </div>
+        </Container>
+    </footer>
+    <script src='/src/scripts/tabs.js' type='module'></script>
+</section>
+
+<style>
+    .multiply {
+        position: relative;
+        background: var(--gradient-primary);
+        min-height: 100vh;
+        padding-top: 60px;
+        padding-bottom: 129px;
+    }
+    .multiply__title {
+        text-align: right;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 90%;
+        color: var(--color-brand-primary);
+    }
+    em {
+        font-style: normal;
+        color: var(--color-brand-primary);
+    }
+
+    .multiply__wrapper {
+        padding-top: 60px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .multiply__actions {
+        flex-basis: 563px;
+    }
+
+    .multiply__btn {
+        padding: 33px 57px;
+        margin-top: 30px;
+        display: flex;
+        gap: 40px;
+        border-radius: 100px;
+        font-size: 32px;
+        line-height: 24px;
+        font-weight: 700;
+        font-family: var(--font-heading);
+        background-color: transparent;
+        color: var(--color-brand-primary);
+        border: 3px solid var(--color-brand-primary);
+        cursor: pointer;
+        text-align: left;
+
+        &:hover {
+            background-color: var(--color-brand-primary);
+            color: var(---color-text-dark);
+        }
+    }
+
+    .multiply__btn--active {
+        background-color: var(--color-brand-primary);
+        border: 3px solid var(--color-text-dark);
+        color: var(---color-text-dark);
+    }
+
+    .multiply__content {
+        padding: 112px 98px;
+        flex-basis: 757px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: linear-gradient(180deg, #a30ee9 0%, #8a00cc 100%);
+        border-radius: 12px;
+    }
+
+    .multiply__card {
+        display: none;
+    }
+
+    .multiply__card--active {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .multiply__card-text {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        font-family: var(--font-heading);
+    }
+
+    .multiply__img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .multiply__footer {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        bottom: 20px;
+    }
+
+    .multiply__footer-inner {
+        display: flex;
+        justify-content: right;
+        align-items: baseline;
+        gap: 92px;
+        flex-wrap: wrap;
+    }
+
+    .multiply__socials {
+        display: flex;
+        gap: 10px;
+    }
+
+    .multiply__social-link,
+    .multiply__scroll-top {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: var(--font-heading);
+        padding: 10px;
+        color: var(--color-brand-primary);
+        text-decoration-line: underline;
+        text-underline-position: from-font;
+        text-decoration-style: solid;
+    }
+
+    .multiply__scroll-top {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    .multiply__scroll-icon {
+        transition: color 0.2s ease;
+    }
+
+    .multiply__social-link:hover,
+    .multiply__scroll-top:hover {
+        color: var(--color-text-primary);
+    }
+</style>
