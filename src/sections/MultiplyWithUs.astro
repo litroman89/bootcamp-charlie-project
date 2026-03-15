@@ -37,8 +37,6 @@ import MainButton from '@/components/MainButton.astro';
                 <button
                     class='multiply__btn'
                     data-tab='businesses'
-                    data-icon-active={arrowBlackRight.src}
-                    data-icon-inactive={arrowYellowRight.src}
                     type='button'
                     >For Businesses
                     <svg
@@ -53,12 +51,7 @@ import MainButton from '@/components/MainButton.astro';
                             fill='currentColor'></path>
                     </svg>
                 </button>
-                <button
-                    class='multiply__btn'
-                    data-tab='partners'
-                    data-icon-active={arrowBlackRight.src}
-                    data-icon-inactive={arrowYellowRight.src}
-                    type='button'
+                <button class='multiply__btn' data-tab='partners' type='button'
                     >For Partners
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -124,7 +117,9 @@ import MainButton from '@/components/MainButton.astro';
                         ground up, drive traffic, and deliver leads in any niche
                     </div>
                     <Image src={arrowBlack} alt='' height={50} />
-                    <MainButton>LAUNCH NOW</MainButton>
+                    <div class='multiply__button'>
+                        <MainButton>LAUNCH NOW</MainButton>
+                    </div>
                 </div>
             </div>
         </div>
@@ -228,23 +223,24 @@ import MainButton from '@/components/MainButton.astro';
     .multiply__content {
         padding: 112px 98px;
         flex-basis: 757px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
+        display: grid;
         background: linear-gradient(180deg, #a30ee9 0%, #8a00cc 100%);
         border-radius: 12px;
     }
 
     .multiply__card {
-        display: none;
-    }
-
-    .multiply__card--active {
+        grid-area: 1 / 1;
         display: flex;
         flex-direction: column;
         gap: 16px;
         align-items: center;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .multiply__card--active {
+        visibility: visible;
+        opacity: 1;
     }
 
     .multiply__card-text {
@@ -253,6 +249,10 @@ import MainButton from '@/components/MainButton.astro';
         font-weight: 700;
         color: var(--color-text-primary);
         font-family: var(--font-heading);
+    }
+
+    .multiply__button {
+        transform: translateX(-12px);
     }
 
     .multiply__img {
