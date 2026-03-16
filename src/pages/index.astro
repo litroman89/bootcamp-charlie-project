@@ -15,5 +15,7 @@ const [benefits, multiply, tasks] = await Promise.all([
 <Layout>
 	<!-- <pre>{JSON.stringify(tasks, null, 2)}</pre> -->
 	<Hero />
+	<MultyTasks data={tasks} />
+	<MultiBenefits />
 	<MultiplyWithUs />
 </Layout>
