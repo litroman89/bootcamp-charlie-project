@@ -1,0 +1,148 @@
+---
+interface Props {
+	id?: string;
+}
+
+const { id = 'success-modal' } = Astro.props;
+
+import Logo from '@/assets/icons/snake-icon-purple.svg';
+---
+
+<dialog id={id} class='modal' aria-labelledby='modal-title' aria-modal='true'>
+	<div class='modal__inner'>
+		<button
+			type='button'
+			class='modal__close'
+			aria-label='Закрыть'
+			data-modal-close
+		>
+			<svg
+				width='18'
+				height='16'
+				viewBox='0 0 18 16'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'
+				aria-hidden='true'
+			>
+				<path
+					d='M17.448 0.55214L11.256 7.87214L17.448 15.1921V15.7441H13.224L8.736 10.3201L4.224 15.7441H-3.8147e-06V15.1921L6.192 7.87214L-3.8147e-06 0.55214V0.00014019H4.224L8.736 5.42414L13.248 0.00014019H17.448V0.55214Z'
+					fill='currentColor'></path>
+			</svg>
+		</button>
+
+		<div class='modal__logo'>
+			<Logo width={57} height={52} aria-hidden='true' />
+		</div>
+
+		<h2 class='modal__title'>We have received your application!</h2>
+
+		<p class='modal__description'>
+			We will process your request<br />and get in touch with you
+		</p>
+		<button type='button' class='modal__close-button' data-modal-close>
+			Done
+		</button>
+	</div>
+</dialog>
+
+<style>
+	.modal {
+		margin: auto;
+		padding: 0;
+		border: 2px solid var(--color-brand-secondary);
+		border-radius: var(--radius-md);
+		background: #fff;
+		color: var(--color-brand-secondary);
+		font-family: var(--font-body);
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		width: 558px;
+	}
+
+	.modal::backdrop {
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(4px);
+	}
+
+	.modal__inner {
+		position: relative;
+		padding: 60px 30px 52px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.modal__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		color: var(--color-brand-secondary);
+		cursor: pointer;
+		border-radius: var(--radius-sm);
+		transition: color 0.15s;
+	}
+
+	.modal__close:hover {
+		color: color-mix(
+			in srgb,
+			var(--color-brand-secondary),
+			transparent 50%
+		);
+	}
+
+	.modal__logo {
+		display: flex;
+		justify-content: center;
+	}
+
+	.modal__logo :global(svg) {
+		display: block;
+	}
+
+	.modal__title {
+		margin-top: 50px;
+		font-family: var(--font-heading);
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--color-text-dark);
+		text-transform: uppercase;
+	}
+
+	.modal__description {
+		margin-top: 20px;
+		font-family: var(--font-heading);
+		font-size: 20px;
+		font-weight: 400;
+		color: var(--color-text-dark);
+	}
+
+	.modal__close-button {
+		margin-top: 60px;
+		align-self: center;
+		padding: 10px 40px;
+		font-family: var(--font-heading);
+		font-weight: 500;
+		font-size: 14px;
+		color: var(--color-text-dark);
+		background: var(--color-brand-primary);
+		border: none;
+		border-radius: var(--radius-sm);
+		cursor: pointer;
+		transition:
+			background 0.15s,
+			color 0.15s;
+	}
+
+	.modal__close-button:hover {
+		background: var(--color-brand-secondary);
+		color: var(--color-text-primary);
+	}
+</style>

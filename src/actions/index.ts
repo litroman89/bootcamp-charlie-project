@@ -7,7 +7,7 @@ export const server = {
     sendContactForm: defineAction({
         accept: "form",
         input: z.object({
-            name: z.string(),
+            name: z.string().optional(),
             method: z.enum(['telegram', 'whatsapp', 'email']),
             contact: z.string(),
         }),
