@@ -1,4 +1,7 @@
 ---
+import Modal from '@/components/Modal.astro';
+import SuccessModal from '@/components/SuccessModal.astro';
+
 import '../styles/index.css';
 ---
 
@@ -14,6 +17,8 @@ import '../styles/index.css';
 	</head>
 	<body>
 		<slot />
+		<Modal />
+		<SuccessModal />
 	</body>
 </html>
 
