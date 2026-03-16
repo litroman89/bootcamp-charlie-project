@@ -84,7 +84,9 @@ import MainButton from '@/components/MainButton.astro';
                         budget, all the tools and high profit shares
                     </div>
                     <Image src={arrowBlack} alt='' height={50} />
-                    <MainButton>JOIN THE TEAM</MainButton>
+                    <div class='multiply__button'>
+                        <MainButton>JOIN THE TEAM</MainButton>
+                    </div>
                 </div>
 
                 <div class='multiply__card' data-card='businesses'>
@@ -101,7 +103,9 @@ import MainButton from '@/components/MainButton.astro';
                         funnels, creatives, and expert guidance
                     </div>
                     <Image src={arrowBlack} alt='' height={50} />
-                    <MainButton>PARTNER UP</MainButton>
+                    <div class='multiply__button'>
+                        <MainButton>PARTNER UP</MainButton>
+                    </div>
                 </div>
 
                 <div class='multiply__card' data-card='partners'>
@@ -249,10 +253,11 @@ import MainButton from '@/components/MainButton.astro';
         font-weight: 700;
         color: var(--color-text-primary);
         font-family: var(--font-heading);
+        text-align: center;
     }
 
     .multiply__button {
-        transform: translateX(-12px);
+        transform: translateX(-6px);
     }
 
     .multiply__img {
