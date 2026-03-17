@@ -95,6 +95,8 @@ import MainButton from '@/components/MainButton.astro';
 
     .hero__title-animated {
         color: var(--color-brand-primary);
+        display: inline-block;
+        min-width: 200px;
     }
 
     .hero__description {
@@ -145,6 +147,7 @@ import MainButton from '@/components/MainButton.astro';
 
 <script>
     import { revealFromBottom, revealFromLeft } from '@animations/reveal';
+    import { cycleWords } from '@animations/wordCycle';
 
     document.addEventListener('DOMContentLoaded', () => {
         // Elements from Bottom
@@ -155,5 +158,8 @@ import MainButton from '@/components/MainButton.astro';
 
         // Elements from Left
         revealFromBottom('.social-link', { start: 'top 100%' });
+
+        // Cycle words animation
+        cycleWords('.hero__title-animated', ['PROFIT', 'GROWTH', 'SKILLS']);
     });
 </script>
