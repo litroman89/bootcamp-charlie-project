@@ -6,11 +6,13 @@ import { Picture } from 'astro:assets';
 import arrowBlack from '@/assets/icons/arrow-down-black.svg';
 import arrowYellowRight from '@/assets/icons/arrow-yellow-right.svg';
 import snakeImage from '@/assets/img/snake-with-us.png';
+import AnimatedGrid from '@/components/AnimatedGrid.astro';
 import Container from '@/components/Container.astro';
 import MainButton from '@/components/MainButton.astro';
 ---
 
 <section class='multiply'>
+    <AnimatedGrid id='multiply' />
     <Container>
         <h2 class='multiply__title'>multiply with us</h2>
 
@@ -225,11 +227,13 @@ import MainButton from '@/components/MainButton.astro';
     }
 
     .multiply__content {
+        position: relative;
         padding: 112px 98px;
         flex-basis: 757px;
         display: grid;
         background: linear-gradient(180deg, #a30ee9 0%, #8a00cc 100%);
         border-radius: 12px;
+        z-index: 1;
     }
 
     .multiply__card {

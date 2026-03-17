@@ -25,7 +25,7 @@ export function cycleWords(targets: Targets, words: string[], options?: CycleWor
             // 1. Wait, then animate out (upwards)
             tl.to(el, { y: -yOffset, opacity: 0, duration, delay, ease: 'power2.inOut' })
                 // 2. Swap text and reset position to bottom
-                .set(el, { innerText: nextWord, y: yOffset })
+                .set(el, { textContent: nextWord, y: yOffset })
                 // 3. Animate in (to normal position)
                 .to(el, { y: 0, opacity: 1, duration, ease: 'back.out(3)' });
         });
