@@ -142,3 +142,18 @@ import MainButton from '@/components/MainButton.astro';
         color: var(--color-text-primary);
     }
 </style>
+
+<script>
+    import { revealFromBottom, revealFromLeft } from '@animations/reveal';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Elements from Bottom
+        revealFromLeft(
+            ['.hero__title', '.hero__description', '.hero__button-container'],
+            { distance: 100 },
+        );
+
+        // Elements from Left
+        revealFromBottom('.social-link', { start: 'top 100%' });
+    });
+</script>
