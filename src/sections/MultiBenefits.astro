@@ -4,10 +4,12 @@ import { Image } from 'astro:assets';
 
 import snakeIcon from '@/assets/icons/snake-icon-yellow.svg';
 import benefitsImage from '@/assets/img/snake-benefits.png';
+import AnimatedGrid from '@/components/AnimatedGrid.astro';
 import Container from '@/components/Container.astro';
 ---
 
 <section class='benefits'>
+    <AnimatedGrid id="benefits" />
     <Container>
         <h2 class='benefits__title'>multi-benefits</h2>
 
@@ -97,7 +99,7 @@ import Container from '@/components/Container.astro';
         font-size: 50px;
         text-transform: none;
         color: var(--color-text-primary);
-        line-height: 1
+        line-height: 1;
     }
     .benefits__wrapper {
         padding-top: 20px;
