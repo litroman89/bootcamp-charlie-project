@@ -6,16 +6,19 @@ import MultiplyWithUs from '@/sections/MultiplyWithUs.astro';
 import MultyTasks from '@/sections/MultyTasks.astro';
 import { cpaApi } from '@/services/api';
 const [benefits, multiply, tasks] = await Promise.all([
-	cpaApi.benefits(),
-	cpaApi.multiply(),
-	cpaApi.tasks(),
+    cpaApi.benefits(),
+    cpaApi.multiply(),
+    cpaApi.tasks(),
 ]);
 ---
 
 <Layout>
-	<!-- <pre>{JSON.stringify(tasks, null, 2)}</pre> -->
-	<Hero />
-	<MultyTasks data={tasks} />
-	<MultiBenefits />
-	<MultiplyWithUs />
+    <Hero />
+    <MultyTasks data={tasks} />
+    <MultiBenefits />
+    <MultiplyWithUs />
+
+    <script>
+        import '../scripts/fullpage.js';
+    </script>
 </Layout>

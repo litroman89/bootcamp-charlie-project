@@ -146,7 +146,7 @@ import MainButton from '@/components/MainButton.astro';
                     <a href='#' class='multiply__social-link'>TELEGRAM</a>
                     <a href='#' class='multiply__social-link'>LINKEDIN</a>
                 </div>
-                <button class='multiply__scroll-top'
+                <button class='multiply__scroll-top' id="to-top"
                     >SCROLL TO TOP <svg
                         class='multiply__scroll-icon'
                         xmlns='http://www.w3.org/2000/svg'
@@ -170,9 +170,9 @@ import MainButton from '@/components/MainButton.astro';
     .multiply {
         position: relative;
         background: var(--gradient-primary);
-        min-height: 100vh;
         padding-top: 60px;
         padding-bottom: 129px;
+        height: 100dvh;
     }
     .multiply__title {
         text-align: right;
