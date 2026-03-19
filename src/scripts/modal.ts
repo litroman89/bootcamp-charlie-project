@@ -1,5 +1,3 @@
-import { actions } from 'astro:actions';
-
 // -- Modal Window Management --
 
 export function openDialogById(id: string) {
@@ -83,16 +81,38 @@ export function handleFormError(error: unknown, defaultMessage: string = 'Про
 	alert(defaultMessage);
 }
 
+type ContactMethod = 'telegram' | 'whatsapp' | 'email';
+
+type SubmitContactFormResponse = {
+	success?: boolean;
+	message?: string;
+};
+
 export async function submitContactForm(form: HTMLFormElement) {
 	const formData = new FormData(form);
+	const payload = {
+		name: formData.get('name')?.toString().trim() || undefined,
+		method: formData.get('method')?.toString() as ContactMethod,
+		contact: formData.get('contact')?.toString().trim() ?? '',
+	};
 
 	try {
-		const { data, error } = await actions.sendContactForm(formData);
+		const response = await fetch('/api/send-contact-form', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(payload),
+		});
+		const result = (await response.json().catch(() => null)) as SubmitContactFormResponse | null;
 
-		if (data?.success) {
+		if (response.ok && result?.success) {
 			handleFormSuccess(form);
-		} else if (error) {
-			handleFormError(error);
+		} else {
+			handleFormError(
+				new Error(result?.message ?? `Request failed with status ${response.status}`),
+				result?.message,
+			);
 		}
 	} catch (err) {
 		handleFormError(err, 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз.');
