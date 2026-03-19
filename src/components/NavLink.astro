@@ -2,12 +2,13 @@
 interface Props {
     href: string;
     label: string;
+    section: number;
 }
 
-const { href, label } = Astro.props;
+const { href, label, section } = Astro.props;
 ---
 
-<a href={href} class='nav__link'>
+<a href={href} class='nav__link' data-section={section}>
     {label}
 </a>
 

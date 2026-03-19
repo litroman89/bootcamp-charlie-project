@@ -6,11 +6,13 @@ import { Picture } from 'astro:assets';
 import arrowBlack from '@/assets/icons/arrow-down-black.svg';
 import arrowYellowRight from '@/assets/icons/arrow-yellow-right.svg';
 import snakeImage from '@/assets/img/snake-with-us.png';
+import AnimatedGrid from '@/components/AnimatedGrid.astro';
 import Container from '@/components/Container.astro';
 import MainButton from '@/components/MainButton.astro';
 ---
 
 <section class='multiply'>
+    <AnimatedGrid id='multiply' />
     <Container>
         <h2 class='multiply__title'>multiply with us</h2>
 
@@ -80,8 +82,8 @@ import MainButton from '@/components/MainButton.astro';
                     <Image src={arrowBlack} alt='' height={50} />
 
                     <div class='multiply__card-text'>
-                        Multiply your profits with MULTICPA —  we provide the
-                        budget, all the tools and high profit shares
+                        Multiply your profits with MULTICPA — we provide the
+                        budget, all the toolsand high profit shares
                     </div>
                     <Image src={arrowBlack} alt='' height={50} />
                     <div class='multiply__button'>
@@ -91,9 +93,9 @@ import MainButton from '@/components/MainButton.astro';
 
                 <div class='multiply__card' data-card='businesses'>
                     <div class='multiply__card-text'>
-                        Experienced solo buyer or running  a whole team? Need a
+                        Experienced solo buyer or running a whole team? Need a
                         reliable partner program with fast onboarding in
-                        sweepstakes  and full support?
+                        sweepstakes and full support?
                     </div>
                     <Image src={arrowBlack} alt='' height={50} />
 
@@ -146,7 +148,7 @@ import MainButton from '@/components/MainButton.astro';
                     <a href='#' class='multiply__social-link'>TELEGRAM</a>
                     <a href='#' class='multiply__social-link'>LINKEDIN</a>
                 </div>
-                <button class='multiply__scroll-top'
+                <button class='multiply__scroll-top' id="to-top"
                     >SCROLL TO TOP <svg
                         class='multiply__scroll-icon'
                         xmlns='http://www.w3.org/2000/svg'
@@ -170,9 +172,9 @@ import MainButton from '@/components/MainButton.astro';
     .multiply {
         position: relative;
         background: var(--gradient-primary);
-        min-height: 100vh;
         padding-top: 60px;
         padding-bottom: 129px;
+        height: 100dvh;
     }
     .multiply__title {
         text-align: right;
@@ -225,11 +227,13 @@ import MainButton from '@/components/MainButton.astro';
     }
 
     .multiply__content {
+        position: relative;
         padding: 112px 98px;
         flex-basis: 757px;
         display: grid;
         background: linear-gradient(180deg, #a30ee9 0%, #8a00cc 100%);
         border-radius: 12px;
+        z-index: 1;
     }
 
     .multiply__card {

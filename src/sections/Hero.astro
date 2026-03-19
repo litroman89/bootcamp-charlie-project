@@ -5,6 +5,7 @@ import InstaIcon from '@/assets/icons/insta.svg';
 import LinkedInIcon from '@/assets/icons/linkedIn.svg';
 import TelegramIcon from '@/assets/icons/telegram.svg';
 import snakeImage from '@/assets/img/img-hero.png';
+import AnimatedGrid from '@/components/AnimatedGrid.astro';
 import Container from '@/components/Container.astro';
 import Header from '@/components/Header.astro';
 import MainButton from '@/components/MainButton.astro';
@@ -12,7 +13,7 @@ import MainButton from '@/components/MainButton.astro';
 
 <section class='hero gradient-bg'>
     <Header />
-
+    <AnimatedGrid id="hero" />
     <div class='hero__content'>
         <Container>
             <div class='hero__text'>
@@ -64,11 +65,11 @@ import MainButton from '@/components/MainButton.astro';
         background: var(--gradient-primary);
     }
     .hero {
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         padding-top: 30px;
         padding-bottom: 50px;
+        height: 100dvh;
     }
 
     .hero__content {
@@ -95,6 +96,9 @@ import MainButton from '@/components/MainButton.astro';
 
     .hero__title-animated {
         color: var(--color-brand-primary);
+        display: inline-block;
+        min-width: 407px;
+        will-change: transform;
     }
 
     .hero__description {
@@ -118,6 +122,7 @@ import MainButton from '@/components/MainButton.astro';
         height: auto;
         bottom: 0;
         right: 0px;
+        pointer-events: none;
     }
     .social-links {
         display: flex;
@@ -142,3 +147,22 @@ import MainButton from '@/components/MainButton.astro';
         color: var(--color-text-primary);
     }
 </style>
+
+<script>
+    import { revealFromBottom, revealFromLeft } from '@animations/reveal';
+    import { cycleWords } from '@animations/wordCycle';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Elements from Bottom
+        revealFromLeft(
+            ['.hero__title', '.hero__description', '.hero__button-container'],
+            { distance: 100 },
+        );
+
+        // Elements from Left
+        revealFromBottom('.social-link', { start: 'top 100%' });
+
+        // Cycle words animation
+        cycleWords('.hero__title-animated', ['PROFIT', 'GROWTH', 'SKILLS']);
+    });
+</script>

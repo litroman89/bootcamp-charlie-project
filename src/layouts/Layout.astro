@@ -19,12 +19,18 @@ import '../styles/index.css';
 		<slot />
 		<Modal />
 		<SuccessModal />
+
+		<script>
+			import { initBgGridAnimation } from '@animations/animateBgGrid';
+
+			initBgGridAnimation();
+		</script>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		width: 100%;
-	}
+    html,
+    body {
+        overflow: hidden; 
+    }
 </style>
