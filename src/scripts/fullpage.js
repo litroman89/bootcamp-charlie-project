@@ -67,3 +67,14 @@ document.querySelector('nav').addEventListener('click', e => {
     const index = Number(link.dataset.section);
     goToSection(index);
 });
+
+//обработчик на клавиши
+window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        goToSection(currentIndex + 1);
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        goToSection(currentIndex - 1);
+    }
+});
