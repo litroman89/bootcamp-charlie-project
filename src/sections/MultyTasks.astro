@@ -40,12 +40,14 @@ const restTiles = tiles.slice(2);
     <Container>
         <div class='multy-tasks__wrapper'>
             <header class='multy-tasks__header'>
-                <h2 class='multy-tasks__title'>Multy-tasks</h2>
+                <h2 class='multy-tasks__title' data-reveal='top'>
+                    Multy-tasks
+                </h2>
             </header>
 
             <div class='multy-tasks__grid'>
                 <div class='multy-tasks__grid-column'>
-                    <div class='card card-main'>
+                    <div class='card card-main' data-reveal='left'>
                         <div
                             class='main-text'
                             set:html={formatDescription(data.description)}
@@ -63,7 +65,7 @@ const restTiles = tiles.slice(2);
                 <div class='multy-tasks__grid-column'>
                     {
                         firstTwoTiles.map((tile: FeatureTile) => (
-                            <div class='card'>
+                            <div class='card' data-reveal='right'>
                                 <h3>{tile.title}</h3>
                                 <p>{tile.text}</p>
                             </div>
@@ -73,7 +75,7 @@ const restTiles = tiles.slice(2);
                 <div class='multy-tasks__grid-column'>
                     {
                         restTiles.map((tile: FeatureTile) => (
-                            <div class='card'>
+                            <div class='card' data-reveal='right'>
                                 <h3>{tile.title}</h3>
                                 <p>{tile.text}</p>
                             </div>
@@ -180,3 +182,19 @@ const restTiles = tiles.slice(2);
         }
     }
 </style>
+
+<script>
+    import {
+        revealFromLeft,
+        revealFromRight,
+        revealFromTop,
+    } from '@/animations/reveal';
+
+    revealFromRight('[data-reveal="right"]', { distance: 100, delay: 0.2 });
+    revealFromLeft('[data-reveal="left"]', { distance: 200 });
+    revealFromTop('[data-reveal="top"]', {
+        distance: 50,
+        end: 'bottom 0%',
+        delay: 0.4,
+    });
+</script>

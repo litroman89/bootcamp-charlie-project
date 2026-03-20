@@ -13,7 +13,7 @@ import MainButton from '@/components/MainButton.astro';
 
 <section class='hero gradient-bg'>
     <Header />
-    <AnimatedGrid id="hero" />
+    <AnimatedGrid id='hero' />
     <div class='hero__content'>
         <Container>
             <div class='hero__text'>
@@ -152,17 +152,15 @@ import MainButton from '@/components/MainButton.astro';
     import { revealFromBottom, revealFromLeft } from '@animations/reveal';
     import { cycleWords } from '@animations/wordCycle';
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Elements from Bottom
-        revealFromLeft(
-            ['.hero__title', '.hero__description', '.hero__button-container'],
-            { distance: 100 },
-        );
+    // Elements from Bottom
+    revealFromLeft(
+        ['.hero__title', '.hero__description', '.hero__button-container'],
+        { distance: 150 },
+    );
 
-        // Elements from Left
-        revealFromBottom('.social-link', { start: 'top 100%' });
+    // Elements from Left
+    revealFromBottom('.social-link', { start: 'top 100%', delay: 0.2 });
 
-        // Cycle words animation
-        cycleWords('.hero__title-animated', ['PROFIT', 'GROWTH', 'SKILLS']);
-    });
+    // Cycle words animation
+    cycleWords('.hero__title-animated', ['PROFIT', 'GROWTH', 'SKILLS']);
 </script>
