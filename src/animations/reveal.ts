@@ -9,6 +9,7 @@ export interface RevealOptions {
     start?: string;
     end?: string;
     once?: boolean;
+    delay?: number;
 }
 
 const defaultOptions: Required<RevealOptions> = {
@@ -19,6 +20,7 @@ const defaultOptions: Required<RevealOptions> = {
     start: 'top 85%',
     end: 'bottom 10%',
     once: false,
+    delay: 0,
 };
 
 const initializedElements = new WeakSet<Element>();
@@ -62,6 +64,7 @@ function createScrollReveal(targets: Targets, axis: 'x' | 'y', offset: number | 
             ease: opts.ease,
             overwrite: 'auto',
             [axis]: 0,
+            delay: opts.delay,
         };
         gsap.to(batch, toVars);
     };
@@ -110,7 +113,18 @@ export function revealFromLeft(targets: Targets, options?: RevealOptions) {
     return createScrollReveal(targets, 'x', offset, options);
 }
 
+export function revealFromRight(targets: Targets, options?: RevealOptions) {
+    const dist = options?.distance ?? defaultOptions.distance;
+    const offset = typeof dist === 'number' ? dist : `${dist}`;
+    return createScrollReveal(targets, 'x', offset, options);
+}
+
 export function revealFromBottom(targets: Targets, options?: RevealOptions) {
     const offset = options?.distance ?? defaultOptions.distance;
     return createScrollReveal(targets, 'y', offset, options);
+}
+
+export function revealFromTop(targets: Targets, options?: RevealOptions) {
+    const offset = options?.distance ?? defaultOptions.distance;
+    return createScrollReveal(targets, 'y', `-${offset}`, options);
 }
