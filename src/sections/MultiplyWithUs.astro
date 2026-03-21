@@ -79,13 +79,13 @@ import MainButton from '@/components/MainButton.astro';
                         Looking for a team where you can grow and scale without
                         limits?
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
 
                     <div class='multiply__card-text'>
                         Multiply your profits with MULTICPA — we provide the
                         budget, all the toolsand high profit shares
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
                     <div class='multiply__button'>
                         <MainButton>JOIN THE TEAM</MainButton>
                     </div>
@@ -97,14 +97,14 @@ import MainButton from '@/components/MainButton.astro';
                         reliable partner program with fast onboarding in
                         sweepstakes and full support?
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
 
                     <div class='multiply__card-text'>
                         Work with MULTICPA — you run the traffic, we handle
                         everything else. From infrastructure and tech support to
                         funnels, creatives, and expert guidance
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
                     <div class='multiply__button'>
                         <MainButton>PARTNER UP</MainButton>
                     </div>
@@ -116,13 +116,13 @@ import MainButton from '@/components/MainButton.astro';
                         Have a budget, but no traffic team, creatives, or
                         strategy?
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
 
                     <div class='multiply__card-text'>
                         Contact MULTICPA — we’ll build everything from the
                         ground up, drive traffic, and deliver leads in any niche
                     </div>
-                    <Image src={arrowBlack} alt='' height={50} />
+                    <Image src={arrowBlack} alt='' height={50} loading='lazy' />
                     <div class='multiply__button'>
                         <MainButton>LAUNCH NOW</MainButton>
                     </div>
@@ -138,6 +138,8 @@ import MainButton from '@/components/MainButton.astro';
         width={631}
         class='multiply__img'
         aria-hidden='true'
+        loading='lazy'
+        decoding='async'
     />
 
     <footer class='multiply__footer'>

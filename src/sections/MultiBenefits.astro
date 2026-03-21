@@ -47,6 +47,8 @@ import Container from '@/components/Container.astro';
                     class='benefits__image'
                     width={390}
                     formats={['avif', 'webp', 'png']}
+                    loading='lazy'
+                    decoding='async'
                 />
             </div>
         </div>
@@ -57,16 +59,16 @@ import Container from '@/components/Container.astro';
         <div class='ticker__track'>
             <div class='ticker__content'>
                 <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} />
+                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
                 <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} />
+                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
             </div>
 
             <div class='ticker__content' aria-hidden='true'>
                 <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} />
+                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
                 <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} />
+                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
             </div>
         </div>
     </div>
@@ -195,13 +197,13 @@ import Container from '@/components/Container.astro';
 
     // Левая группа
     revealFromLeft(['.benefits__label', '.benefits__text'], {
-        stagger: 0, 
+        stagger: 0,
         distance: 200, //расстояние
     });
 
     // Правая группа
     revealFromRight(['.benefits__image', '.benefits__list'], {
-        stagger: 0, 
-        distance: 200, 
+        stagger: 0,
+        distance: 200,
     });
 </script>

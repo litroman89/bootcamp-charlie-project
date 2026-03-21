@@ -57,6 +57,8 @@ import MainButton from '@/components/MainButton.astro';
         widths={[320, 768, 1200, snakeImage.width]}
         sizes='(max-width: 320px) 320px, (max-width: 768px) 768px, 1200px'
         class='hero__image'
+        fetchpriority='high'
+        loading='eager'
     />
 </section>
 
