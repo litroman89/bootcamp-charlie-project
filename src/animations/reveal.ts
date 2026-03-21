@@ -25,16 +25,21 @@ const defaultOptions: Required<RevealOptions> = {
 
 const initializedElements = new WeakSet<Element>();
 
-function createScrollReveal(targets: Targets, axis: 'x' | 'y', offset: number | string, options?: RevealOptions) {
+function createScrollReveal(
+    targets: Targets,
+    axis: 'x' | 'y',
+    offset: number | string,
+    options?: RevealOptions,
+) {
     if (typeof window === 'undefined') {
-        return { refresh: () => { }, destroy: () => { } };
+        return { refresh: () => {}, destroy: () => {} };
     }
 
     const opts = { ...defaultOptions, ...options };
     const allElements = normalizeTargets(targets);
 
     // Filter elements to avoid duplicate initializations
-    const elements = allElements.filter((el) => {
+    const elements = allElements.filter(el => {
         if (initializedElements.has(el)) return false;
         initializedElements.add(el);
         return true;
@@ -43,7 +48,7 @@ function createScrollReveal(targets: Targets, axis: 'x' | 'y', offset: number | 
     if (elements.length === 0) {
         return {
             refresh: () => ScrollTrigger.refresh(),
-            destroy: () => { },
+            destroy: () => {},
         };
     }
 
@@ -74,7 +79,7 @@ function createScrollReveal(targets: Targets, axis: 'x' | 'y', offset: number | 
             ...initialVars,
             duration: opts.duration,
             ease: opts.ease,
-            overwrite: true // Важно: прерываем предыдущую анимацию полностью
+            overwrite: true, // Важно: прерываем предыдущую анимацию полностью
         });
     };
 
@@ -94,11 +99,11 @@ function createScrollReveal(targets: Targets, axis: 'x' | 'y', offset: number | 
             ScrollTrigger.refresh();
         },
         destroy: () => {
-            elements.forEach((el) => {
+            elements.forEach(el => {
                 initializedElements.delete(el);
             });
             if (triggers) {
-                triggers.forEach((t) => {
+                triggers.forEach(t => {
                     t.kill();
                 });
             }

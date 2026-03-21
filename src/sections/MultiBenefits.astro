@@ -9,7 +9,7 @@ import Container from '@/components/Container.astro';
 ---
 
 <section class='benefits'>
-    <AnimatedGrid id="benefits" />
+    <AnimatedGrid id='benefits' />
     <Container>
         <h2 class='benefits__title'>multi-benefits</h2>
 
@@ -189,3 +189,19 @@ import Container from '@/components/Container.astro';
         }
     }
 </style>
+
+<script>
+    import { revealFromLeft, revealFromRight } from '@/animations/reveal';
+
+    // Левая группа
+    revealFromLeft(['.benefits__label', '.benefits__text'], {
+        stagger: 0, 
+        distance: 200, //расстояние
+    });
+
+    // Правая группа
+    revealFromRight(['.benefits__image', '.benefits__list'], {
+        stagger: 0, 
+        distance: 200, 
+    });
+</script>

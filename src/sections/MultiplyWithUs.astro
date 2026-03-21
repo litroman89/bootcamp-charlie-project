@@ -148,7 +148,7 @@ import MainButton from '@/components/MainButton.astro';
                     <a href='#' class='multiply__social-link'>TELEGRAM</a>
                     <a href='#' class='multiply__social-link'>LINKEDIN</a>
                 </div>
-                <button class='multiply__scroll-top' id="to-top"
+                <button class='multiply__scroll-top' id='to-top'
                     >SCROLL TO TOP <svg
                         class='multiply__scroll-icon'
                         xmlns='http://www.w3.org/2000/svg'
@@ -167,7 +167,24 @@ import MainButton from '@/components/MainButton.astro';
     </footer>
     <script src='/src/scripts/tabs.js' type='module'></script>
 </section>
+<script>
+    import { revealFromBottom } from '@/animations/reveal';
 
+    revealFromBottom(
+        ['.multiply__title', '.multiply__actions', '.multiply__content'],
+        {
+            distance: 30,
+            duration: 0.6,
+        },
+    );
+
+    // футер отдельно — триггер срабатывает раньше
+    revealFromBottom('.multiply__footer', {
+        distance: 30,
+        duration: 0.6,
+        start: 'top 110%', // почти у самого края экрана
+    });
+</script>
 <style>
     .multiply {
         position: relative;
