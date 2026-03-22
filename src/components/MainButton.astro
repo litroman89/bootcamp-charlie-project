@@ -1,8 +1,12 @@
 ---
+interface Props {
+    dataOpenModal?: string;
+}
 
+const { ...props } = Astro.props;
 ---
 
-<button class='main-button'>
+<button class='main-button' {...props}>
     <slot />
 </button>
 
