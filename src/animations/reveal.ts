@@ -1,5 +1,5 @@
 import { gsap, ScrollTrigger } from './gsap';
-import { normalizeTargets, type Targets } from './utils';
+import { normalizeTargets, type Targets } from '@/utils/normalizeTargets';
 
 export interface RevealOptions {
     distance?: number | string;
@@ -32,7 +32,7 @@ function createScrollReveal(
     options?: RevealOptions,
 ) {
     if (typeof window === 'undefined') {
-        return { refresh: () => {}, destroy: () => {} };
+        return { refresh: () => { }, destroy: () => { } };
     }
 
     const opts = { ...defaultOptions, ...options };
@@ -48,7 +48,7 @@ function createScrollReveal(
     if (elements.length === 0) {
         return {
             refresh: () => ScrollTrigger.refresh(),
-            destroy: () => {},
+            destroy: () => { },
         };
     }
 
