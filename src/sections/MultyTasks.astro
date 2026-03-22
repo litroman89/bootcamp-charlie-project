@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets';
 
 import snakeImage from '@/assets/img/snake-tasks.png';
 import Container from '@/components/Container.astro';
+import { formatMultyTasksDescription } from '@/services/multyTasksDescription';
 
 export interface FeatureTile {
     title: string;
@@ -17,18 +18,6 @@ export interface Props {
 }
 
 const { data } = Astro.props;
-
-const STRINGS_TO_HIGHLIGHT = ['in-house team'];
-
-// Функция, которая заменяет подстроку на обернутый span
-function formatDescription(text: string) {
-    STRINGS_TO_HIGHLIGHT.forEach(string => {
-        if (text.includes(string)) {
-            text = text.replace(string, `<span>${string}</span>`);
-        }
-    });
-    return text;
-}
 
 const tiles = data.tiles;
 
@@ -50,7 +39,9 @@ const restTiles = tiles.slice(2);
                     <div class='card card-main' data-reveal='left'>
                         <div
                             class='main-text'
-                            set:html={formatDescription(data.description)}
+                            set:html={formatMultyTasksDescription(
+                                data.description,
+                            )}
                         />
                         <Picture
                             src={snakeImage}
