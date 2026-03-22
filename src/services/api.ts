@@ -1,5 +1,3 @@
-// import { actions } from 'astro:actions';
-
 //1 константы
 const LOCALES = {
     EN: 'en',
@@ -35,7 +33,7 @@ export type ContactFormData = {
 };
 
 // 3 утилита для построения URL
-const buildContentUrl = (locale: Locale, page: Page) =>
+export const buildContentUrl = (locale: Locale, page: Page) =>
     `${BASE_URL}/${locale}/${page}`;
 
 const fetchPageContent = async (
@@ -55,17 +53,9 @@ const fetchPageContent = async (
     return await response.json();
 };
 
-// const postData = async (data: any) => {
-//     const { error } = await actions.sendContactForm(data);
-
-//     if (error) {
-//         throw new Error(`Ошибка при отправке данных: ${error.message}`);
-//     }
-// };
 
 export const cpaApi = {
     benefits: (locale?: Locale) => fetchPageContent(locale, PAGES.BENEFITS),
     multiply: (locale?: Locale) => fetchPageContent(locale, PAGES.MULTIPLY),
     tasks: (locale?: Locale) => fetchPageContent(locale, PAGES.TASKS),
-    // postData: (data: ContactFormData) => postData(data),
 };
