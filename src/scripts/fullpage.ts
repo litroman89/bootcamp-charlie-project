@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollToPlugin);
 // -----------------------------------------------------------------------------
 // 1) Переменные
 // -----------------------------------------------------------------------------
-const sections = gsap.utils.toArray('section');
+const sections = gsap.utils.toArray<HTMLElement>('section');
 const ANIMATION_DURATION_SEC = 1;
 
 let isAnimating = false;
@@ -15,7 +15,7 @@ let currentIndex = 0; // текущая секция
 // -----------------------------------------------------------------------------
 // 2) Основная функция перехода к секции
 // -----------------------------------------------------------------------------
-function goToSection(index) {
+function goToSection(index:number) {
     if (isAnimating) return; // если анимация идёт — игнорируем
     if (index < 0 || index >= sections.length) return; // за границы не выходим (начало/конец)
 
@@ -56,12 +56,13 @@ window.addEventListener(
 
 // Кнопка наверх
 document
-    .querySelector('#to-top')
+    .querySelector<HTMLButtonElement>('#to-top')!
     .addEventListener('click', () => goToSection(0));
 
+
 // NAV обработчик на ссылки в наве.
-document.querySelector('nav').addEventListener('click', e => {
-    const link = e.target.closest('a');
+document.querySelector<HTMLElement>('nav')?.addEventListener('click', e => {
+    const link = (e.target as HTMLElement)?.closest<HTMLAnchorElement>('a');
     if (!link) return;
 
     const index = Number(link.dataset.section);
