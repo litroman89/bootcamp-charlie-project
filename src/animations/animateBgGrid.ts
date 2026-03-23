@@ -1,5 +1,5 @@
 import { gsap } from './gsap';
-import { type Targets } from './utils';
+import { type Targets } from '@/utils/normalizeTargets';
 
 // Находим градиент
 

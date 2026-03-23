@@ -1,5 +1,5 @@
 import { gsap } from './gsap';
-import { normalizeTargets, type Targets } from './utils';
+import { normalizeTargets, type Targets } from '@/utils/normalizeTargets';
 
 export interface CycleWordsOptions {
     duration?: number;
