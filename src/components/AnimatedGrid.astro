@@ -1,16 +1,20 @@
 ---
 interface Props {
     id: string;
+    aspectMode?: 'stretch' | 'cover';
 }
-const { id } = Astro.props;
+
+const { id, aspectMode = 'stretch' } = Astro.props;
 const gradientId = `grid-gradient-${id}`;
 const maskId = `grid-mask-${id}`;
+const preserveAspectRatio =
+    aspectMode === 'cover' ? 'xMidYMid slice' : 'none';
 ---
 
 <div class='animated-grid' data-gradient-id={gradientId}>
     <svg
         viewBox='0 0 1440 900'
-        preserveAspectRatio='none'
+        preserveAspectRatio={preserveAspectRatio}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >

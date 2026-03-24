@@ -60,12 +60,15 @@ document
     .addEventListener('click', () => goToSection(0));
 
 
-// NAV обработчик на ссылки в наве.
-document.querySelector<HTMLElement>('nav')?.addEventListener('click', e => {
-    const link = (e.target as HTMLElement)?.closest<HTMLAnchorElement>('a');
+// Навигация по секциям: делегирование (десктопный nav + мобильное меню в dialog).
+document.addEventListener('click', e => {
+    const link = (e.target as HTMLElement)?.closest<HTMLAnchorElement>('a[data-section]');
     if (!link) return;
 
     const index = Number(link.dataset.section);
+    if (!Number.isInteger(index)) return;
+
+    e.preventDefault();
     goToSection(index);
 });
 

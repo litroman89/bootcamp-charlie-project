@@ -34,6 +34,16 @@ const { links } = Astro.props;
 </nav>
 
 <style>
+    .nav {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .nav {
+            display: block;
+        }
+    }
+
     .nav__list {
         display: flex;
         gap: 20px;
