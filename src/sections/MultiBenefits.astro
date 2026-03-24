@@ -26,6 +26,45 @@ import Container from '@/components/Container.astro';
                 the sweepstakes vertical
             </p>
 
+            <!-- анимация, alt иконке не указывал так как это декоративный элемент-->
+            <div class='ticker' aria-label='DREAM BIG EARN BIGGER ticker'>
+                <div class='ticker__track'>
+                    <div class='ticker__content'>
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                    </div>
+
+                    <div class='ticker__content' aria-hidden='true'>
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                    </div>
+                </div>
+            </div>
+
             <div class='benefits__cards'>
                 <ul class='benefits__list'>
                     <li class='benefit__card'>
@@ -53,27 +92,7 @@ import Container from '@/components/Container.astro';
             </div>
         </div>
     </Container>
-
-    <!-- анимация, alt иконке не указывал так как это декоративный элемент-->
-    <div class='ticker'>
-        <div class='ticker__track'>
-            <div class='ticker__content'>
-                <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
-                <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
-            </div>
-
-            <div class='ticker__content' aria-hidden='true'>
-                <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
-                <span>DREAM BIG EARN BIGGER!</span>
-                <Image src={snakeIcon} alt='' width={60} loading='lazy' />
-            </div>
-        </div>
-    </div>
 </section>
-
 <style>
     .benefits {
         position: relative;
@@ -153,6 +172,8 @@ import Container from '@/components/Container.astro';
 
     .ticker {
         position: absolute;
+        left: 0;
+        right: 0;
         bottom: 48px;
         width: 100%;
         overflow: hidden;
@@ -176,6 +197,7 @@ import Container from '@/components/Container.astro';
         font-weight: 300;
         color: var(--color-brand-primary);
         font-family: var(--font-heading);
+        line-height: 1;
     }
 
     .ticker__icon {
@@ -188,6 +210,119 @@ import Container from '@/components/Container.astro';
         }
         to {
             transform: translateX(-50%);
+        }
+    }
+
+    @media (max-width: 1368px) {
+        .benefits__label {
+            font-size: 48px;
+        }
+
+        .benefits__wrapper {
+            display: block;
+        }
+        .benefits__cards {
+            width: 520px;
+            margin-left: auto;
+            margin-top: 40px;
+        }
+
+        .ticker__content {
+            font-size: 66px;
+        }
+    }
+    @media (max-width: 1024px) {
+        .benefits__label {
+            width: 100%;
+            font-size: 46px;
+        }
+
+        .benefits__cards {
+            width: 400px;
+        }
+        .benefits__image {
+            width: 320px;
+            left: -320px;
+        }
+
+        .benefit__card {
+            padding: 15px 30px 15px 15px;
+        }
+
+        .ticker__content {
+            font-size: 62px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .benefits__title {
+            display: none;
+        }
+        .benefits__label {
+            margin-top: 40px;
+            font-size: 40px;
+        }
+        .benefits__text {
+            width: 100%;
+        }
+        .benefits__list {
+            gap: 25px;
+        }
+        .benefits__cards {
+            width: 100%;
+        }
+
+        .benefits__image {
+            display: none;
+        }
+
+        .ticker__content {
+            font-size: 58px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .benefits {
+            padding-top: 32px;
+        }
+        .benefits__label {
+            margin-top: 32px;
+            font-size: 32px;
+            line-height: 90%;
+        }
+
+        .benefits__wrapper {
+            padding-top: 16px;
+        }
+
+        .benefits__cards {
+            margin-top: 27px;
+        }
+
+        .benefits__text {
+            font-size: 16px;
+
+            line-height: 20px;
+        }
+
+        .benefit__card {
+            font-size: 20px;
+            line-height: 25px;
+            padding: 15px;
+        }
+
+        .ticker {
+            position: static;
+            margin-left: -60px;
+            margin-right: -60px;
+            margin-top: 36px;
+            width: calc(100% + 90px * 2);
+        }
+        .ticker__content {
+            font-size: 35px;
+            & img {
+                width: 40px;
+            }
         }
     }
 </style>
