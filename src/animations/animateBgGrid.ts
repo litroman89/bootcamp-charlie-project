@@ -5,10 +5,6 @@ import { type Targets } from '@/utils/normalizeTargets';
 
 export function animateBgGrid(targets: Targets) {
     if (typeof window === 'undefined') return;
-    // const gradient = normalizeTargets(targets);
-    // if (!gradient.length) return;
-
-    console.log('bg animate');
 
     const tl = gsap.timeline({ repeat: -1, defaults: { ease: "sine.inOut" } });
 

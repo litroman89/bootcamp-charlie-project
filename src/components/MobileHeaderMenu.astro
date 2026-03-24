@@ -1,0 +1,149 @@
+---
+import AnimatedGrid from './AnimatedGrid.astro';
+import NavLink from './NavLink.astro';
+import SocialLinks from './SocialLinks.astro';
+import { HEADER_MOBILE_NAV_DIALOG_ID } from '@/scripts/headerMobileMenu';
+
+interface Link {
+    href: string;
+    label: string;
+    section: number;
+}
+
+interface Props {
+    links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<dialog
+    id={HEADER_MOBILE_NAV_DIALOG_ID}
+    class='header-menu'
+    aria-labelledby='header-mobile-nav-title'
+    aria-modal='true'
+>
+    <div class='header-menu__grid' aria-hidden='true'>
+        <AnimatedGrid id='mobile-nav' aspectMode='cover' />
+    </div>
+    <div class='header-menu__inner'>
+        <button
+            type='button'
+            class='header-menu__close'
+            aria-label='Close menu'
+            data-modal-close
+        >
+            <svg
+                width='18'
+                height='16'
+                viewBox='0 0 18 16'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+                aria-hidden='true'
+            >
+                <path
+                    d='M17.448 0.55214L11.256 7.87214L17.448 15.1921V15.7441H13.224L8.736 10.3201L4.224 15.7441H-3.8147e-06V15.1921L6.192 7.87214L-3.8147e-06 0.55214V0.00014019H4.224L8.736 5.42414L13.248 0.00014019H17.448V0.55214Z'
+                    fill='currentColor'></path>
+            </svg>
+        </button>
+
+        <h2 id='header-mobile-nav-title' class='visually-hidden'>Menu</h2>
+
+        <nav class='header-menu__nav' aria-label='Primary'>
+            <ul class='header-menu__list'>
+                {
+                    links.map(link => (
+                        <li class='header-menu__item' data-modal-close>
+                            <NavLink
+                                href={link.href}
+                                label={link.label}
+                                section={link.section}
+                            />
+                        </li>
+                    ))
+                }
+                <li class='header-menu__item header-menu__item--lang'>
+                    <slot />
+                </li>
+            </ul>
+        </nav>
+    </div>
+</dialog>
+
+<style>
+    .header-menu {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: none;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        max-height: none;
+        overflow: hidden;
+        background: #560080;
+        color: var(--color-text-primary);
+    }
+
+    .header-menu__grid {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .header-menu::backdrop {
+        background: rgba(12, 9, 14, 0.6);
+    }
+
+    .header-menu__inner {
+        position: relative;
+        z-index: 1;
+        min-height: 100dvh;
+        padding: 30px 14px 48px;
+        box-sizing: border-box;
+    }
+
+    .header-menu__close {
+        position: absolute;
+        top: 24px;
+        right: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: var(--color-brand-primary);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .header-menu__close:hover {
+        color: var(--color-brand-primary);
+    }
+
+    .header-menu__nav {
+        padding-top: 56px;
+    }
+
+    .header-menu__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .header-menu__item {
+        padding: 10px;
+    }
+
+    .header-menu__item--lang {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

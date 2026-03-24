@@ -30,8 +30,8 @@ describe('Hero.astro', () => {
         expect(doc.querySelector('.hero__button-container')).not.toBeNull();
     });
 
-    it('renders three social-link anchors', () => {
-        expect(doc.querySelectorAll('a.social-link')).toHaveLength(3);
+    it('renders three social-link anchors in hero footer', () => {
+        expect(doc.querySelectorAll('.hero footer a.social-link')).toHaveLength(3);
     });
 
     it('wraps PROFIT in span.hero__title-animated', () => {

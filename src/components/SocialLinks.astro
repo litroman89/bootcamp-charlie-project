@@ -1,0 +1,67 @@
+---
+import InstaIcon from '@/assets/icons/insta.svg';
+import LinkedInIcon from '@/assets/icons/linkedIn.svg';
+import TelegramIcon from '@/assets/icons/telegram.svg';
+
+interface Props {
+    variant?: 'hero' | 'menu';
+}
+
+const { variant = 'hero' } = Astro.props;
+
+const rootClass =
+    variant === 'menu' ? 'social-links social-links--menu' : 'social-links';
+---
+
+<div class={rootClass}>
+    <a href='#' class='social-link' aria-label='Instagram'>
+        <InstaIcon name='facebook' width={30} height={30} aria-hidden='true' />
+    </a>
+    <a href='#' class='social-link' aria-label='Telegram'>
+        <TelegramIcon
+            name='twitter'
+            width={30}
+            height={30}
+            aria-hidden='true'
+        />
+    </a>
+    <a href='#' class='social-link' aria-label='LinkedIn'>
+        <LinkedInIcon
+            name='linkedin'
+            width={30}
+            height={30}
+            aria-hidden='true'
+        />
+    </a>
+</div>
+
+<style>
+    .social-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .social-links--menu {
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    .social-link {
+        padding: 5px;
+    }
+
+    .social-link path {
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        path {
+            fill: var(--color-brand-primary);
+        }
+    }
+
+    .socials__link:hover {
+        color: var(--color-text-primary);
+    }
+</style>
