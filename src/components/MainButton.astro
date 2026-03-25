@@ -104,4 +104,14 @@ const { ...props } = Astro.props;
     .main-button:active::after {
         opacity: 0;
     }
+
+    @media (max-width: 768px) {
+        .main-button {
+            --depth: 10px;
+
+            font-size: 18px;
+            padding-top: 21px;
+            padding-bottom: 17px;
+        }
+    }
 </style>

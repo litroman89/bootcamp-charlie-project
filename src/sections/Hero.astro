@@ -16,13 +16,12 @@ import SocialLinks from '@/components/SocialLinks.astro';
         <Container>
             <div class='hero__text'>
                 <h1 class='hero__title'>
-                    PRACTICE <br /> MAKES <span class='hero__title-animated'
-                        >PROFIT</span
-                    >
+                    PRACTICE <br /> MAKES
+                    <span class='hero__title-animated'>PROFIT</span>
                 </h1>
                 <p class='hero__description'>
-                    A team of passionate creators crafting digital experiences
-                    that push boundaries and leave a lasting impression.
+                    We provide effective solutions, tested and refined on our
+                    own products and ad budgets
                 </p>
 
                 <div class='hero__button-container'>
@@ -69,15 +68,17 @@ import SocialLinks from '@/components/SocialLinks.astro';
     }
 
     .hero__text {
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 12px;
+        z-index: 1;
     }
 
     .hero__title {
         font-family: var(--font-heading);
         color: var(--color-text-primary);
-        font-size: 80px;
+        font-size: clamp(38px, 18px + 5vw, 80px);
         font-weight: 700;
         line-height: 90%; /* 72px */
         letter-spacing: -1.742px;
@@ -87,16 +88,16 @@ import SocialLinks from '@/components/SocialLinks.astro';
     .hero__title-animated {
         color: var(--color-brand-primary);
         display: inline-block;
-        min-width: 407px;
+        min-width: 100px;
+        max-width: 120px;
         will-change: transform;
     }
 
     .hero__description {
-        margin-top: 12px;
         max-width: 536px;
         font-family: var(--font-body);
         color: var(--color-text-primary);
-        font-size: 20px;
+        font-size: clamp(16px, 14.0952px + 0.4762vw, 20px);
         font-weight: 400;
         line-height: 120%;
         margin-bottom: 30px;
@@ -106,13 +107,24 @@ import SocialLinks from '@/components/SocialLinks.astro';
         margin-top: 30px;
     }
 
+    @media (max-width: 768px) {
+        .hero__description {
+            margin-bottom: 0;
+        }
+
+        .hero__button-container {
+            margin-top: 8px;
+        }
+    }
+
     .hero__image {
         position: absolute;
-        max-width: 949px;
+        max-width: clamp(436px, 191.7143px + 61.0714vw, 949px);
         height: auto;
         bottom: 0;
         right: 0px;
         pointer-events: none;
+        z-index: 0;
     }
 </style>
 
