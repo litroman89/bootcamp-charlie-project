@@ -147,7 +147,7 @@ import MainButton from '@/components/MainButton.astro';
         loading='lazy'
         decoding='async'
     />
-
+    <h2 class='multiply__title-mobile'>MULTIPLY WITH US</h2>
     <footer class='multiply__footer'>
         <Container>
             <div class='multiply__footer-inner'>
@@ -208,6 +208,16 @@ import MainButton from '@/components/MainButton.astro';
         line-height: 90%;
         color: var(--color-brand-primary);
     }
+
+    .multiply__title-mobile {
+        display: none;
+        color: var(--color-brand-primary);
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 30px;
+        text-transform: uppercase;
+    }
     em {
         font-style: normal;
         color: var(--color-brand-primary);
@@ -258,7 +268,6 @@ import MainButton from '@/components/MainButton.astro';
         display: grid;
         background: linear-gradient(180deg, #a30ee9 0%, #8a00cc 100%);
         border-radius: 12px;
-        z-index: 1;
     }
 
     .multiply__card {
@@ -344,5 +353,132 @@ import MainButton from '@/components/MainButton.astro';
     .multiply__social-link:hover,
     .multiply__scroll-top:hover {
         color: var(--color-text-primary);
+    }
+
+    /* медиа запросы на высоту для маков и ноутов */
+    @media (max-height: 900px) {
+        .multiply {
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+        .multiply__wrapper {
+            padding-top: 30px;
+        }
+        .multiply__btn {
+            margin-top: 15px;
+            padding: 28px 45px;
+            font-size: 26px;
+        }
+
+        .multiply__content {
+            padding: 78px 90px;
+        }
+    }
+
+    @media (max-width: 1368px) {
+        .multiply__btn {
+            padding: 20px 44px;
+            font-size: 24px;
+            gap: 20px;
+        }
+        .multiply__content {
+            padding: 60px 48px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .multiply {
+            padding-top: 40px;
+        }
+        .multiply__wrapper {
+            padding-top: 10px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .multiply__actions {
+            flex-basis: auto;
+        }
+        .multiply__btn {
+            margin-top: 18px;
+        }
+        .multiply__content {
+            flex-basis: auto;
+            padding: 40px 28px;
+        }
+
+        .multiply__card {
+            gap: 6px;
+        }
+
+        .multiply__card-text {
+            font-size: 18px;
+        }
+
+        .multiply__img {
+            display: none;
+        }
+
+        .multiply__footer-inner {
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .multiply {
+            padding-bottom: 10px;
+        }
+
+        .multiply__title {
+            display: none;
+        }
+
+        .multiply__title-mobile {
+            display: block;
+        }
+
+        .multiply__wrapper {
+            padding-top: 0px;
+        }
+        .multiply__actions {
+            margin: 0 auto;
+        }
+
+        .multiply__btn {
+            font-size: 22px;
+            & > svg {
+                width: 40px;
+            }
+        }
+
+        .multiply__content {
+            flex-basis: auto;
+            padding: 14px 18px;
+        }
+
+        .multiply__card {
+            & > img {
+                width: 16px;
+            }
+        }
+
+        .multiply__footer {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .multiply__btn {
+            padding: 18px 36px;
+            font-size: 20px;
+            margin-top: 12px;
+            & > svg {
+                width: 30px;
+            }
+        }
+
+            .multiply__card-text {
+                font-size: 16px;
+            }
     }
 </style>
