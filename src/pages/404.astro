@@ -1,0 +1,111 @@
+---
+import MainButton from '@components/MainButton.astro';
+import Logo from '@/assets/icons/snake-icon-white.svg';
+import Container from '@components/Container.astro';
+import Layout from '../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import snakeImg from '@/assets/img/snake-error.png';
+---
+
+<Layout>
+    <section class='error'>
+        <Picture src={snakeImg} alt='snake' class='error__img' />
+
+        <Container>
+            <div class='error__wrapper'>
+                <a href='/' class='logo__wrapper'>
+                    <Logo width={45} height={41} aria-label='go to home page' />
+                </a>
+                <div class='info__wrapper'>
+                    <p class='error__code'>404</p>
+                    <MainButton 
+                        >Oops, take me back</MainButton
+                    >
+                </div>
+            </div>
+        </Container>
+    </section>
+</Layout>
+
+<style>
+    .error {
+        position: relative;
+        padding: 30px 0px 110px 0px;
+        height: 100vh;
+        background: var(--gradient-primary);
+    }
+
+    .error__img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .error__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo__wrapper {
+        align-self: start;
+    }
+
+    .info__wrapper {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .error__code {
+        color: var(--color-text-primary);
+        font-family: var(--font-heading);
+        font-style: normal;
+        font-size: 378px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    @media (max-width: 1368px) {
+        .error__code {
+            font-size: 300px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .error__code {
+            font-size: 230px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .error__code {
+            font-size: 140px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .error__code {
+            font-size: 180px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            line-height: 80%;
+            letter-spacing: -65px;
+        }
+
+        .error__img {
+            position: absolute;
+            bottom: -90px;
+            right: 0;
+            left: auto;
+            transform: scaleX(-1); /* зеркальное отражение */
+        }
+
+        .info__wrapper {
+            gap: 60px;
+        }
+
+        
+    }
+</style>
