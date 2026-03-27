@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { beforeEach,describe, expect, it, vi } from 'vitest';
+
 import { buildContentUrl, cpaApi } from './api';
 
 // --- Unit тесты чистой функции ---
