@@ -174,6 +174,29 @@ const restTiles = tiles.slice(2);
             pointer-events: none;
         }
     }
+
+    @media (max-width: 1023px) {
+        .multy-tasks {
+            overflow: auto;
+        }
+
+        .multy-tasks__title {
+            display: none;
+        }
+
+        .multy-tasks__grid {
+            margin-top: 30px;
+            grid-template-columns: 1fr;
+        }
+
+        .card-main {
+            padding: 20px 10px 0;
+
+            .card-main__image {
+                position: relative;
+            }
+        }
+    }
 </style>
 
 <script>
