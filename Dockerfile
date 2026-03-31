@@ -34,4 +34,5 @@ COPY --from=build /app/dist ./dist
 
 EXPOSE 4321
 
-CMD ["pnpm", "astro", "preview", "--host", "0.0.0.0", "--port", "4321"]
+# CMD ["pnpm", "astro", "preview", "--host", "0.0.0.0", "--port", "4321"]
+CMD ["node", "./dist/server/entry.mjs"]
