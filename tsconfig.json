@@ -13,6 +13,9 @@
       "@/*": [
         "src/*"
       ],
+      "@actions/*": [
+        "src/actions/*"
+      ],
       "@animations/*": [
         "src/animations/*"
       ],
@@ -31,8 +34,20 @@
       "@scripts/*": [
         "src/scripts/*"
       ],
+      "@sections/*": [
+        "src/sections/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@data/*": [
+        "src/data/*"
       ],
     }
   }

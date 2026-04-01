@@ -1,0 +1,44 @@
+---
+
+---
+
+<div class='container'>
+    <slot />
+</div>
+
+<style>
+    .container {
+        width: 100%;
+        margin-inline: auto;
+        padding-inline: 14px;
+        max-width: 390px;
+    }
+
+    @media (min-width: 480px) {
+        .container {
+            max-width: 480px;
+            padding-inline: 20px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 768px;
+            padding-inline: 24px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .container {
+            max-width: 1024px;
+            padding-inline: 32px;
+        }
+    }
+
+    @media (min-width: 1368px) {
+        .container {
+            max-width: 1368px;
+            padding-inline: 12px;
+        }
+    }
+</style>

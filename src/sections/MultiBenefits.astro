@@ -1,0 +1,345 @@
+---
+import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
+
+import snakeIcon from '@/assets/icons/snake-icon-yellow.svg';
+import benefitsImage from '@/assets/img/snake-benefits.png';
+import AnimatedGrid from '@/components/AnimatedGrid.astro';
+import Container from '@/components/Container.astro';
+---
+
+<section class='benefits'>
+    <AnimatedGrid id='benefits' />
+    <Container>
+        <h2 class='benefits__title'>multi-benefits</h2>
+
+        <h3 class='benefits__label'>
+            Results can only be
+            <em>guaranteed</em>
+            when you control every step
+        </h3>
+
+        <div class='benefits__wrapper'>
+            <p class='benefits__text'>
+                That's why we've built a full-time in-house team and developed
+                our own infrastructure tailored to each task — tested daily in
+                the sweepstakes vertical
+            </p>
+
+            <!-- анимация, alt иконке не указывал так как это декоративный элемент-->
+            <div class='ticker' aria-label='DREAM BIG EARN BIGGER ticker'>
+                <div class='ticker__track'>
+                    <div class='ticker__content'>
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                    </div>
+
+                    <div class='ticker__content' aria-hidden='true'>
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                        <span>DREAM BIG EARN BIGGER!</span>
+                        <Image
+                            src={snakeIcon}
+                            alt=''
+                            width={60}
+                            loading='lazy'
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div class='benefits__cards'>
+                <ul class='benefits__list'>
+                    <li class='benefit__card'>
+                        We take on outsourced projects across any niche — from
+                        iGaming and dating to e-commerce and recruitment
+                    </li>
+                    <li class='benefit__card'>
+                        We deliver what has already proven effective — many
+                        times over
+                    </li>
+                    <li class='benefit__card'>
+                        We don’t learn at the client’s expense
+                    </li>
+                </ul>
+
+                <Picture
+                    src={benefitsImage}
+                    alt='Фиолетовая змея с жёлтыми глазами и переливающейся чешуёй'
+                    class='benefits__image'
+                    width={390}
+                    formats={['avif', 'webp', 'png']}
+                    loading='lazy'
+                    decoding='async'
+                />
+            </div>
+        </div>
+    </Container>
+</section>
+<style>
+    .benefits {
+        position: relative;
+        overflow: hidden;
+        background: var(--gradient-primary);
+        padding-top: 60px;
+        padding-bottom: 40px;
+        height: 100dvh;
+    }
+
+    .benefits__title {
+        text-align: right;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 90%;
+        color: var(--color-brand-primary);
+    }
+    em {
+        font-style: normal;
+        color: var(--color-brand-primary);
+    }
+
+    .benefits__label {
+        margin-top: 60px;
+        width: 746px;
+        font-size: 50px;
+        text-transform: none;
+        color: var(--color-text-primary);
+        line-height: 1;
+    }
+    .benefits__wrapper {
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .benefits__text {
+        color: var(--color-text-primary);
+        flex-basis: 563px;
+        font-size: 20px;
+    }
+    .benefits__content {
+        flex-basis: 563px;
+        font-family: var(--font-body);
+    }
+
+    .benefits__cards {
+        position: relative;
+        flex-basis: 563px;
+    }
+
+    .benefits__list {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .benefit__card {
+        padding: 20px 80px 20px 20px;
+        border-radius: var(--radius-sm);
+        background-color: var(--color-brand-secondary);
+        font-size: 20px;
+        line-height: 24px;
+        color: var(--color-text-primary);
+        font-weight: 700;
+        &:hover {
+            color: var(--color-text-dark);
+            background-color: var(--color-brand-primary);
+        }
+    }
+
+    .benefits__image {
+        position: absolute;
+        left: -390px;
+        top: -20px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .ticker {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 48px;
+        width: 100%;
+        overflow: hidden;
+        border-top: 2px solid var(--color-brand-primary);
+        border-bottom: 2px solid var(--color-brand-primary);
+        transform: rotate(1deg);
+    }
+
+    .ticker__track {
+        display: flex;
+        width: max-content;
+        animation: ticker 18s linear infinite;
+    }
+
+    .ticker__content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        padding-right: 60px;
+        font-size: 70px;
+        font-weight: 300;
+        color: var(--color-brand-primary);
+        font-family: var(--font-heading);
+        line-height: 1;
+    }
+
+    .ticker__icon {
+        font-size: 42px;
+    }
+
+    @keyframes ticker {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @media (max-width: 1368px) {
+        .benefits__label {
+            font-size: 48px;
+        }
+
+        .benefits__wrapper {
+            display: block;
+        }
+        .benefits__cards {
+            width: 520px;
+            margin-left: auto;
+            margin-top: 40px;
+        }
+
+        .ticker__content {
+            font-size: 66px;
+        }
+    }
+    @media (max-width: 1024px) {
+        .benefits__label {
+            width: 100%;
+            font-size: 46px;
+        }
+
+        .benefits__cards {
+            width: 400px;
+        }
+        .benefits__image {
+            width: 320px;
+            left: -320px;
+        }
+
+        .benefit__card {
+            padding: 15px 30px 15px 15px;
+        }
+
+        .ticker__content {
+            font-size: 62px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .benefits__title {
+            display: none;
+        }
+        .benefits__label {
+            margin-top: 40px;
+            font-size: 40px;
+        }
+        .benefits__text {
+            width: 100%;
+        }
+        .benefits__list {
+            gap: 25px;
+        }
+        .benefits__cards {
+            width: 100%;
+        }
+
+        .benefits__image {
+            display: none;
+        }
+
+        .ticker__content {
+            font-size: 58px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .benefits {
+            padding-top: 32px;
+        }
+        .benefits__label {
+            margin-top: 32px;
+            font-size: 32px;
+            line-height: 90%;
+        }
+
+        .benefits__wrapper {
+            padding-top: 16px;
+        }
+
+        .benefits__cards {
+            margin-top: 27px;
+        }
+
+        .benefits__text {
+            font-size: 16px;
+
+            line-height: 20px;
+        }
+
+        .benefit__card {
+            font-size: 20px;
+            line-height: 25px;
+            padding: 15px;
+        }
+
+        .ticker {
+            position: static;
+            margin-left: -60px;
+            margin-right: -60px;
+            margin-top: 36px;
+            width: calc(100% + 90px * 2);
+        }
+        .ticker__content {
+            font-size: 35px;
+            & img {
+                width: 40px;
+            }
+        }
+    }
+</style>
+
+<script>
+    import { revealFromLeft, revealFromRight } from '@/animations/reveal';
+
+    // Левая группа
+    revealFromLeft(['.benefits__label', '.benefits__text'], {
+        stagger: 0,
+        distance: 200, //расстояние
+    });
+
+    // Правая группа
+    revealFromRight(['.benefits__image', '.benefits__list'], {
+        stagger: 0,
+        distance: 200,
+    });
+</script>

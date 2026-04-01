@@ -1,0 +1,122 @@
+---
+interface Props {
+    dataOpenModal?: string;
+}
+
+const { ...props } = Astro.props;
+---
+
+<button class='main-button' {...props}>
+    <slot />
+</button>
+
+<style>
+    .main-button {
+        --border-black: #0c090e;
+        --depth: 12px;
+        --border-width: 4px;
+
+        margin-top: var(--depth);
+        position: relative;
+        box-sizing: border-box;
+
+        padding-top: 31px;
+        padding-bottom: 24px;
+        padding-inline: 16px;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 23px;
+        letter-spacing: 4.6px;
+        text-transform: uppercase;
+        text-align: center;
+
+        background-color: var(--color-brand-primary);
+        color: var(--border-black);
+        border: var(--border-width) solid var(--border-black);
+
+        cursor: pointer;
+        outline: none;
+
+        will-change: transform;
+
+        transition:
+            transform 0.1s ease-out,
+            background-color 0.1s,
+            box-shadow 0.1s;
+    }
+
+    .main-button::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+
+        top: calc(-1 * var(--depth) - var(--border-width));
+        left: calc(-1 * var(--border-width));
+        width: calc(100% + var(--border-width) * 2);
+        height: var(--depth);
+
+        background-color: var(--color-brand-primary);
+        border: var(--border-width) solid var(--border-black);
+        border-bottom: none;
+
+        transform-origin: bottom left;
+        transform: skewX(-45deg);
+        z-index: -2;
+
+        will-change: opacity;
+        transition: opacity 0.05s;
+    }
+
+    .main-button::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+
+        top: calc(-1 * var(--border-width));
+        right: calc(-1 * var(--depth) - var(--border-width));
+        width: var(--depth);
+        height: calc(100% + var(--border-width) * 2);
+
+        background-color: var(--color-brand-primary);
+        border: var(--border-width) solid var(--border-black);
+        border-left: none;
+        border-top-width: calc(var(--border-width) / 2);
+
+        transform-origin: bottom left;
+        transform: skewY(-45deg);
+        z-index: -1;
+
+        will-change: opacity;
+        transition: opacity 0.05s;
+    }
+
+    .main-button:hover {
+        --color-brand-primary: #0c090e;
+        --border-black: #fee97d;
+    }
+
+    .main-button:active {
+        transform: translate(var(--depth), calc(var(--depth) * -1));
+        box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    .main-button:active::before,
+    .main-button:active::after {
+        opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+        .main-button {
+            --depth: 10px;
+
+            font-size: 18px;
+            padding-top: 21px;
+            padding-bottom: 17px;
+        }
+    }
+    @media (max-width: 480px) {
+        .main-button {
+            padding: 10px;
+        }
+    }
+</style>

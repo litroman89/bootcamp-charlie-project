@@ -1,0 +1,24 @@
+:root {
+    /* === ЦВЕТА === */
+
+    /* Основные фоновые цвета */
+    --color-brand-primary: #FEE97D;
+    --color-brand-secondary: #9E13E0;
+
+    /* Цвета текста */
+    --color-text-primary: #ffffff;
+    --color-text-dark: #0C090E;
+
+    /* === ГРАДИЕНТЫ === */
+    --gradient-primary: linear-gradient(111deg, #DC8400 -3.49%, #560080 49.69%, #220032 91.86%);
+    --gradient-secondary: linear-gradient(111deg, #14091A -3.49%, #14091A 49.69%, #220032 91.86%);
+    --gradient-card: linear-gradient(125deg, #A30EE9 5.95%, #8A00CC 98.4%);
+
+    /* === РАЗМЕРЫ И ОТСТУПЫ === */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+
+    /* === ШРИФТЫ === */
+    --font-heading: "HalvarBreit", sans-serif;
+    --font-body: "Stolzl", sans-serif;
+}

@@ -1,0 +1,98 @@
+---
+import Container from './Container.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import MobileHeaderMenu from './MobileHeaderMenu.astro';
+import Nav from './Nav.astro';
+import SocialLinks from './SocialLinks.astro';
+import Logo from '@/assets/icons/snake-icon-white.svg';
+import { mainNavLink, navLinks } from '@/data/navigation';
+import { HEADER_MOBILE_NAV_DIALOG_ID } from '@/scripts/headerMobileMenu';
+---
+
+<header class='header'>
+    <Container>
+        <div class='header__wrapper'>
+            <a href='/' class='header__logo'>
+                <Logo width={45} height={41} aria-label='go to home page' />
+            </a>
+            <button
+                type='button'
+                class='header__menu-toggle'
+                data-open-modal={HEADER_MOBILE_NAV_DIALOG_ID}
+                aria-haspopup='dialog'
+                aria-controls={HEADER_MOBILE_NAV_DIALOG_ID}
+                aria-expanded='false'
+            >
+                Menu
+            </button>
+            <Nav links={navLinks}>
+                <LanguageSwitcher />
+            </Nav>
+        </div>
+    </Container>
+    <MobileHeaderMenu links={[mainNavLink, ...navLinks]}>
+        <nav
+            class='header-menu__socials'
+            aria-label='Social media'
+            data-modal-close
+        >
+            <SocialLinks variant='menu' />
+        </nav>
+        <LanguageSwitcher />
+    </MobileHeaderMenu>
+</header>
+
+<script>
+    import { initHeaderMobileMenuAria } from '@/scripts/headerMobileMenu';
+
+    initHeaderMobileMenuAria();
+</script>
+
+<style>
+    .header__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header__menu-toggle {
+        display: block;
+        padding: 10px;
+        font-family: var(--font-heading);
+        color: var(--color-brand-primary);
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration-line: underline;
+        text-underline-position: from-font;
+        text-decoration-style: solid;
+        text-transform: uppercase;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .header__menu-toggle:hover {
+        color: var(--color-text-primary);
+    }
+
+    .header-menu__socials {
+        margin-bottom: 50px;
+    }
+
+    @media (min-width: 1024px) {
+        .header__menu-toggle {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1023px) {
+        .header {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+    }
+</style>

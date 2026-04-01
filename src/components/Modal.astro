@@ -1,0 +1,424 @@
+---
+interface Props {
+	id?: string;
+}
+
+const { id = 'contact-modal' } = Astro.props;
+
+import ArrowDownPurple from '@/assets/icons/arrow-down-purple.svg';
+import Logo from '@/assets/icons/snake-icon-purple.svg';
+---
+
+<dialog id={id} class='modal' aria-labelledby='modal-title' aria-modal='true'>
+	<div class='modal__inner'>
+		<button
+			type='button'
+			class='modal__close'
+			aria-label='Закрыть'
+			data-modal-close
+		>
+			<svg
+				width='18'
+				height='16'
+				viewBox='0 0 18 16'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'
+				aria-hidden='true'
+			>
+				<path
+					d='M17.448 0.55214L11.256 7.87214L17.448 15.1921V15.7441H13.224L8.736 10.3201L4.224 15.7441H-3.8147e-06V15.1921L6.192 7.87214L-3.8147e-06 0.55214V0.00014019H4.224L8.736 5.42414L13.248 0.00014019H17.448V0.55214Z'
+					fill='currentColor'></path>
+			</svg>
+		</button>
+
+		<div class='modal__logo'>
+			<Logo width={57} height={52} aria-hidden='true' />
+		</div>
+
+		<p class='modal__description'>
+			Fields with an asterisk (<span class='modal-asterisk'>*</span>) are
+			mandatory
+		</p>
+
+		<form class='modal__form' method='POST' id='contact-form'>
+			<input
+				type='text'
+				name='name'
+				placeholder='Your name'
+				class='modal__input'
+				autocomplete='name'
+			/>
+			<div class='modal__wrapper'>
+				<div class='custom-select' id='contact-method-select'>
+					<input
+						type='text'
+						name='method'
+						required
+						class='visually-hidden'
+						id='variant-input'
+						tabindex='-1'
+					/>
+
+					<!-- Closed State -->
+					<button
+						type='button'
+						class='custom-select__trigger'
+						aria-haspopup='listbox'
+						aria-expanded='false'
+					>
+						<span class='custom-select__value placeholder'
+							>Contact Method<span class='modal-asterisk'>*</span
+							></span
+						>
+						<ArrowDownPurple
+							class='custom-select__arrow'
+							aria-hidden='true'
+						/>
+					</button>
+
+					<!-- Open State (Absolute Positioned over the trigger) -->
+					<div class='custom-select__dropdown' aria-hidden='true'>
+						<button
+							type='button'
+							class='custom-select__dropdown-header'
+						>
+							<span class='custom-select__value placeholder'
+								>Contact Method<span class='modal-asterisk'
+									>*</span
+								></span
+							>
+							<ArrowDownPurple
+								class='custom-select__arrow is-open'
+								aria-hidden='true'
+							/>
+						</button>
+						<div class='custom-select__divider'></div>
+						<ul class='custom-select__options' role='listbox'>
+							<li
+								class='custom-select__option'
+								role='option'
+								data-value='telegram'
+							>
+								Telegram
+							</li>
+							<li
+								class='custom-select__option'
+								role='option'
+								data-value='whatsapp'
+							>
+								WhatsApp
+							</li>
+							<li
+								class='custom-select__option'
+								role='option'
+								data-value='email'
+							>
+								Email
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class='input-wrapper'>
+					<label for='contact' class='modal__input-placeholder'>
+						Your Contact<span class='modal-asterisk'>*</span>
+					</label>
+					<input
+						type='text'
+						name='contact'
+						required
+						id='contact'
+						placeholder=''
+						class='modal__input'
+					/>
+				</div>
+			</div>
+			<button type='submit' class='modal__submit'> Submit </button>
+		</form>
+	</div>
+</dialog>
+
+<script>
+	import { initCustomSelects } from '../scripts/customSelect';
+	import { initModal } from '../scripts/modal';
+
+	initCustomSelects();
+	initModal();
+</script>
+
+<style>
+	.modal {
+		margin: auto;
+		padding: 0;
+		border: 2px solid var(--color-brand-secondary);
+		border-radius: var(--radius-md);
+		background: #fff;
+		color: var(--color-brand-secondary);
+		font-family: var(--font-body);
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		width: 558px;
+	}
+
+	.modal::backdrop {
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(4px);
+	}
+
+	.modal__inner {
+		position: relative;
+		padding: 60px 30px 52px;
+	}
+
+	.modal__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		color: var(--color-brand-secondary);
+		cursor: pointer;
+		border-radius: var(--radius-sm);
+		transition: color 0.15s;
+	}
+
+	.modal__close:hover {
+		color: color-mix(
+			in srgb,
+			var(--color-brand-secondary),
+			transparent 50%
+		);
+	}
+
+	.modal__logo {
+		display: flex;
+		justify-content: center;
+	}
+
+	.modal__logo :global(svg) {
+		display: block;
+	}
+
+	.modal__description {
+		margin-top: 40px;
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 300;
+		color: var(--color-text-dark);
+	}
+
+	.modal-asterisk {
+		color: var(--color-brand-secondary);
+		font-weight: 500;
+	}
+
+	.modal__form {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.modal__wrapper {
+		margin-top: 7px;
+		display: flex;
+		gap: 12px;
+	}
+
+	.input-wrapper {
+		position: relative;
+		flex: 1;
+	}
+
+	.modal__input {
+		width: 100%;
+		padding: 8.5px 12px;
+		border: 1px solid
+			color-mix(in srgb, var(--color-brand-secondary), transparent 70%);
+		border-radius: var(--radius-sm);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--color-text-dark);
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 300;
+		transition: border-color 0.15s;
+	}
+
+	.modal__input::placeholder,
+	.modal__input-placeholder {
+		color: var(--color-text-dark);
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 1.4;
+	}
+
+	.modal__input-placeholder {
+		position: absolute;
+		left: 12px; /* подстройте под padding инпута */
+		top: 8.5px;
+		pointer-events: none; /* чтобы клик проходил сквозь текст */
+	}
+
+	/* Скрываем лейбл, когда инпут в фокусе или не пуст */
+	.input-wrapper:has(.modal__input:not(:placeholder-shown))
+		.modal__input-placeholder {
+		opacity: 0;
+	}
+
+	.modal__input:focus {
+		outline: none;
+		border-color: var(--color-brand-secondary);
+	}
+
+	.custom-select {
+		position: relative;
+		width: 192px;
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 300;
+	}
+
+	.custom-select__trigger,
+	.custom-select__dropdown-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: 8.5px 12px;
+		background: transparent;
+		color: var(--color-text-dark);
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+
+	.custom-select__trigger {
+		border: 1px solid
+			color-mix(in srgb, var(--color-brand-secondary), transparent 70%);
+		border-radius: var(--radius-sm);
+		background: rgba(255, 255, 255, 0.06);
+		transition: border-color 0.15s;
+	}
+
+	.custom-select__trigger:focus {
+		outline: none;
+		border-color: var(--color-brand-secondary);
+	}
+
+	.custom-select__value.placeholder {
+		color: var(--color-text-dark);
+	}
+
+	.custom-select__arrow {
+		width: 12px;
+		height: 12px;
+		transition: transform 0.2s ease;
+	}
+
+	.custom-select__arrow.is-open {
+		transform: rotate(180deg);
+	}
+
+	.custom-select__dropdown {
+		position: absolute;
+		top: -1px;
+		left: -1px;
+		width: calc(100% + 2px);
+		background: #fff;
+		border: 1px solid var(--color-brand-secondary);
+		border-radius: var(--radius-sm);
+		z-index: 10;
+		display: none;
+	}
+
+	.custom-select.is-open .custom-select__dropdown {
+		display: block;
+	}
+
+	.custom-select__divider {
+		height: 1px;
+		background-color: color-mix(
+			in srgb,
+			var(--color-brand-secondary),
+			transparent 70%
+		);
+		margin: 0 12px;
+	}
+
+	.custom-select__options {
+		list-style: none;
+		margin: 0;
+		padding: 4px 0;
+		max-height: 160px;
+		color: var(--color-text-dark);
+		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: color-mix(
+				in srgb,
+				var(--color-brand-secondary),
+				transparent 50%
+			)
+			transparent;
+	}
+
+	.custom-select__options::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.custom-select__options::-webkit-scrollbar-track {
+		background: transparent;
+		margin-bottom: 8px;
+	}
+
+	.custom-select__options::-webkit-scrollbar-thumb {
+		background-color: color-mix(
+			in srgb,
+			var(--color-brand-secondary),
+			transparent 50%
+		);
+		border-radius: 4px;
+	}
+
+	.custom-select__option {
+		padding: 8px 12px;
+		cursor: pointer;
+		transition: background-color 0.15s;
+	}
+
+	.custom-select__option:hover,
+	.custom-select__option.is-selected {
+		background-color: color-mix(
+			in srgb,
+			var(--color-text-dark),
+			transparent 90%
+		);
+	}
+
+	.modal__submit {
+		margin-top: 30px;
+		align-self: center;
+		padding: 10px 40px;
+		font-family: var(--font-heading);
+		font-weight: 500;
+		font-size: 14px;
+		color: var(--color-text-dark);
+		background: var(--color-brand-primary);
+		border: none;
+		border-radius: var(--radius-sm);
+		cursor: pointer;
+		transition:
+			background 0.15s,
+			color 0.15s;
+	}
+
+	.modal__submit:hover {
+		background: var(--color-brand-secondary);
+		color: var(--color-text-primary);
+	}
+</style>

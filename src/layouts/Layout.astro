@@ -1,23 +1,30 @@
+---
+import Modal from '@/components/Modal.astro';
+import SuccessModal from '@/components/SuccessModal.astro';
+
+import '../styles/index.css';
+---
+
 <!doctype html>
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel='icon' href='/favicon.ico' />
+		<meta name='generator' content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
 	<body>
 		<slot />
+		<Modal />
+		<SuccessModal />
+
+		<script>
+			import { initBgGridAnimation } from '@animations/animateBgGrid';
+
+			initBgGridAnimation();
+		</script>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

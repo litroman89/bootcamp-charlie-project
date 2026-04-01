@@ -1,0 +1,39 @@
+name: Build and Deploy to Netlify
+on:
+  push:
+    branches:
+      - develop
+
+concurrency:
+  group: netlify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies and build
+        run: pnpm install --frozen-lockfile && pnpm run build
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@3185065f4ab2f6df6f2ef41ee013626e1c02a426
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=dist

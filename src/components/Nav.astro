@@ -1,0 +1,71 @@
+---
+import NavLink from './NavLink.astro';
+
+interface Link {
+    href: string;
+    label: string;
+    section: number;
+}
+
+interface Props {
+    links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class='nav'>
+    <ul class='nav__list'>
+        {
+            links.map(link => (
+                <li class='nav__item'>
+                    <NavLink
+                        href={link.href}
+                        label={link.label}
+                        section={link.section}
+                    />
+                </li>
+            ))
+        }
+        <li class='nav__item'>
+            <slot />
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .nav {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .nav {
+            display: block;
+        }
+    }
+
+    .nav__list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav__item {
+        padding: 10px;
+    }
+
+    .nav__link {
+        font-family: var(--font-heading);
+        color: var(--color-brand-primary);
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration-line: underline;
+        text-underline-position: from-font;
+        text-decoration-style: solid;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+    }
+
+    .nav__link:hover {
+        color: var(--color-text-primary);
+    }
+</style>
