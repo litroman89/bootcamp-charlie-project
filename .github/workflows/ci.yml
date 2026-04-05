@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+    # CI запускается при открытии PR в develop (feature/* → develop)
+    # и при мерже develop в main (develop → main)
+    branches:
+      - main
+      - develop
+
+jobs:
+  ci:
+    name: Lint, Test & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # Клонируем репозиторий на виртуальную машину GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Устанавливаем pnpm 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      # Устанавливаем Node.js нужной версии.
+      # cache: pnpm — кэшируем node_modules между запусками CI,
+      # чтобы не скачивать пакеты заново каждый раз (привязано к pnpm-lock.yaml)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # Устанавливаем зависимости.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Проверяем код через ESLint.
+      - name: Lint
+        run: pnpm lint
+
+      # Запускаем тесты через Vitest.
+      # Используем test:run
+      # и CI зависнет навсегда.
+      - name: Test
+        run: pnpm test:run
+
+      # Собираем продакшн-бандл через Astro.
+      - name: Build
+        run: pnpm build
