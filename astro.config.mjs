@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
 import netlify from '@astrojs/netlify';
 import node from '@astrojs/node';
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   // есть форма, значит проект работает как сервер
